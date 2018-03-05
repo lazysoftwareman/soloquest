@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+@font-face {
+   font-family: 'primitive';
+   src: url(primitive.eot);
+   src: local('primitive'), url('primitive.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'heroquest';
+   src: url(heroquest.eot);
+   src: local('heroquest'), url('heroquest.ttf') format('truetype');
+}
+
+html {
+	height: 100%;
+	background-color: black;
+}
+
+body {	
+    opacity: 1;
+    transition: 2s opacity;
+	
+	min-height: 100%;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	background-image: url(pergamena.jpg);
+}
+body.buio {
+    opacity: 0;
+    transition: none;
+}
+body.fade-out {
+    opacity: 0;
+    transition: 2s opacity;
+}
+
+.container {
+	padding: 5vh 5vw 5vh 5vw;
+	height: 90vh;
+	font-size: 1em;
+	font-family: primitive;	
+	overflow: hidden;
+}
+
+h1 {
+	font-size: 3vh;
+	text-align: center;
+	font-family: heroquest;
+	-webkit-margin-before: 0;
+	padding: 0 2vw 2vw 2vw;
+}
+.h1 {
+	font-size: 3vh;
+	text-align: center;
+	font-family: heroquest;
+	-webkit-margin-before: 0;
+	padding: 0 2vw 2vw 2vw;
+	/* display: block; */
+	font-weight: bold;
+}
+
+input, select {
+	font-family: primitive;
+}
+#tabelloneContainer {
+	overflow: auto;
+	height: 80vh;
+	max-width: 90vw;
+	position: relative;
+}
+.centralContent {
+	/* margin-top: 20vh; */
+	text-align: center;
+	font-size: 2vh;
+	max-height: 75vh;
+	overflow: auto;
+}
+.centralContent div {
+	padding: 2vw;
+}
+
+.titoloAvventura {
+	/* width: 100%; */
+	height: 10vh;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.tabellone {
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 780px;
+	height: 570px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(pergamenaBW.jpg);
+}
+
+.tabellone .borderSu {
+	border-top-width: 3px;
+}
+.tabellone .borderDx {
+	border-right-width: 3px;
+}
+.tabellone .borderSx {
+	border-left-width: 3px;
+}
+.tabellone .borderGiu {
+	border-bottom-width: 3px;
+}
+.tabellone td {
+	border: 1px solid black;
+	height: 30px;
+	width: 30px;
+	background-color: #666;
+	padding: 0;
+	text-align: center;
+    vertical-align: middle;
+	color: white;
+	box-sizing: border-box;
+}
+
+.popupMenu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 25vw;
+    overflow: auto;
+    box-shadow: 0 2vh 4vh 0 rgba(0,0,0,0.5);
+    z-index: 1;
+	background-image: url(pergamenaBW.jpg);
+}
+
+.popupMenu span {
+    color: black;
+    padding: 2vh 3vw;
+    text-decoration: none;
+    display: block;
+	cursor: pointer;
+	border: 1px solid brown;
+}
+.show {
+	display:block;
+}
+
+.risultato {
+	font-size: 12pt;
+	border: 1vh solid black;
+    box-shadow: 0 2vh 4vh 0 rgba(0,0,0,0.5);
+	padding: 5vw;
+    width: 10px;
+	height: 10px;
+	display: none;	
+    position: absolute;
+	background-image: url(pergamena.jpg);
+	overflow: auto;
+	transition: width 1s, height 1s;
+}
+
+.info {
+	font-size: 8pt;
+}
+.mostroInfo {
+	font-weight: bold;
+}
+#mostroNome {
+	margin-bottom: 10px;
+}
+.mostroImg {
+	float: left;
+	width: 90px;
+	height: auto;
+	margin-right: 10px;
+}
+.mostroErrante {
+	height: 30px;
+	width: auto;
+}

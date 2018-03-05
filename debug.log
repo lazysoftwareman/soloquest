@@ -1,0 +1,6 @@
+[0220/221800.689:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\Setmy\Reports\Dump: Impossibile trovare il percorso specificato. (0x3)
+[0220/221800.689:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Pipe terminata. (0x6D)
+[0220/221800.704:ERROR:crash_report_database_win.cc(563)] CreateDirectory C:\Program Files (x86)\Setmy\Reports\Dump: Impossibile trovare il percorso specificato. (0x3)
+[0122/212658.911:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Program Files (x86)\Setmy\Reports\Dump: Impossibile trovare il percorso specificato. (0x3)
+[0122/212658.916:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: Pipe terminata. (0x6D)
+[0122/212658.917:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Program Files (x86)\Setmy\Reports\Dump: Impossibile trovare il percorso specificato. (0x3)

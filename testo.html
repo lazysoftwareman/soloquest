@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Solo Quest</title>
+<link rel="stylesheet" href="solitario.css"/>
+<script type="text/javascript" src="fx.js" charset="UTF-8"></script>
+<script type="text/javascript" src="solitario.js" charset="UTF-8"></script>
+<script type="text/javascript">	
+getJsonAvventure();
+
+var avventura = "LaProva";
+	
+function getAvventura() {
+	fadeIn();
+    getDatiAvventura();
+	mostraTesto();
+}
+
+function mostraTesto(){
+	document.getElementById('risultato').innerHTML = dati.testo;
+}
+
+function gioca() {
+	changePage("solo.html#"+avventura);
+}
+	
+window.onload = getAvventura;
+	
+</script>
+</head>
+<body class="buio">
+<div class="container">
+	<div class="centralContent">
+		<div id="risultato" style="border: solid 2px black;">&nbsp;</div>
+		<br/>
+		<input type="button" value="Gioca" onclick="gioca();"/>
+	</div>
+</div>
+</body>
+</html>

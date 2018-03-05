@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Solo Quest</title>
+<link rel="stylesheet" href="solitario.css"/>
+<script type="text/javascript" src="fx.js" charset="UTF-8"></script>
+<script type="text/javascript" src="solitario.js" charset="UTF-8"></script>
+<script type="text/javascript" src="mostri.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	getJsonAvventure();
+	
+	function cominciaAvventura(){
+		fadeIn();
+		getDatiAvventura();
+		startAvventura();
+		scrollToStart();
+	}
+	
+	function startAvventura() {
+		document.getElementById("titoloAvventura").innerHTML = dati.nome;
+		rendiVisibileStart();
+	}
+	
+	function scrollToStart(){
+		var stanzaStart = dati.start.stanza;
+		var container = document.getElementById("tabelloneContainer");
+		if (stanzaStart && stanzaStart.startsWith("s")){
+			container.scrollTop = container.scrollHeight;
+		} else if (stanzaStart && stanzaStart.startsWith("c")){
+			container.scrollTop = container.scrollHeight/2;
+			container.scrollLeft = container.scrollWidth/2;
+		}
+		if (stanzaStart && stanzaStart.substring(1, 1) =="e"){
+			container.scrollLeft = container.scrollWidth;
+		}		
+	}
+	
+	function svuotaTutto() {
+		document.getElementById('risultato').innerHTML = "&nbsp;";
+		var t = document.getElementById("tabellone");
+		var trs = t.getElementsByTagName("tr");
+		var tds = null;
+		for (var i=0; i<trs.length; i++) {
+			tds = trs[i].getElementsByTagName("td");
+			for (var n=0; n<tds.length;n++) {
+				tds[n].innerHTML = "";
+				tds[n].style.backgroundColor= "#666";
+			}
+		}
+		
+	}
+	
+	function mostraInfoAvventura() {
+		var testo = dati.testo;
+		var merrante = "<img src='img/" + dati.mostroErrante + ".png' class='mostroErrante'/>";
+		merrante += "&nbsp;Mostro errante: " + mostri[dati.mostroErrante].nome;
+		testo += "<br><br>" + merrante;
+		popuppa (testo);
+	}
+	
+	function mostraTutto() {
+		rendiVisibileTutto();
+		alert ("Te l'avevo detto di non cliccare! Adesso hai rovinato tutto! Ti tocca refreshare la pagina e ricominciare. Brao mona");
+	}
+	
+	function mostraCelle() {
+		var t = document.getElementById("tabellone");
+		var trs = t.getElementsByTagName("tr");
+		var tds = null;
+		for (var i=0; i<trs.length; i++) {
+			tds = trs[i].getElementsByTagName("td");
+			for (var n=0; n<tds.length;n++) {
+				tds[n].innerHTML = tds[n].id;
+			}
+		}
+	}
+	
+	window.onload = cominciaAvventura;
+</script>
+</head>
+<body class="buio">
+<div class="container">
+	<!-- <input type="button" value="Start" onclick="startAvventura();"/>&nbsp; -->
+	<!-- <input type="button" value="Non cliccare" onclick="mostraTutto();"/>&nbsp;	-->
+	<!-- <input type="button" value="Griglia" onclick="mostraCelle();"/> -->
+	<div class="titoloAvventura">	
+		<span class="h1" id="titoloAvventura"></span>
+		<span class="h1"><input type="button" value="I" onclick="mostraInfoAvventura();"/></span>
+	</div>
+	<div id="tabelloneContainer">
+	<table id="tabellone" class="tabellone">
+		<tr>
+			<td id="a1" class="borderSu borderSx">&nbsp;</td>
+			<td id="a2" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a3" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a4" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a5" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a6" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a7" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a8" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a9" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a10" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a11" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a12" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a13" class="borderSu">&nbsp;</td>
+			<td id="a14" class="borderSu">&nbsp;</td>
+			<td id="a15" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a16" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a17" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a18" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a19" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a20" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a21" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a22" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a23" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a24" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a25" class="borderSu borderGiu">&nbsp;</td>
+			<td id="a26" class="borderSu borderDx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="b1" class="borderSx borderDx">&nbsp;</td>
+			<td id="b2" class="borderSx borderSu">&nbsp;</td>
+			<td id="b3" class="borderSu">&nbsp;</td>
+			<td id="b4" class="borderSu">&nbsp;</td>
+			<td id="b5" class="borderSu borderDx">&nbsp;</td>
+			<td id="b6" class="borderSu borderSx">&nbsp;</td>
+			<td id="b7" class="borderSu">&nbsp;</td>
+			<td id="b8" class="borderSu">&nbsp;</td>
+			<td id="b9" class="borderSu borderDx">&nbsp;</td>
+			<td id="b10" class="borderSu borderSx">&nbsp;</td>
+			<td id="b11" class="borderSu">&nbsp;</td>
+			<td id="b12" class="borderSu borderDx">&nbsp;</td>
+			<td id="b13" class="borderSx">&nbsp;</td>
+			<td id="b14" class="borderDx">&nbsp;</td>
+			<td id="b15" class="borderSu borderSx">&nbsp;</td>
+			<td id="b16" class="borderSu">&nbsp;</td>
+			<td id="b17" class="borderSu borderDx">&nbsp;</td>
+			<td id="b18" class="borderSu borderSx">&nbsp;</td>
+			<td id="b19" class="borderSu">&nbsp;</td>
+			<td id="b20" class="borderSu">&nbsp;</td>
+			<td id="b21" class="borderSu borderDx">&nbsp;</td>
+			<td id="b22" class="borderSu borderSx">&nbsp;</td>
+			<td id="b23" class="borderSu">&nbsp;</td>
+			<td id="b24" class="borderSu">&nbsp;</td>
+			<td id="b25" class="borderSu borderDx">&nbsp;</td>
+			<td id="b26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="c1" class="borderSx borderDx">&nbsp;</td>
+			<td id="c2" class="borderSx">&nbsp;</td>
+			<td id="c3" class="">&nbsp;</td>
+			<td id="c4" class="">&nbsp;</td>
+			<td id="c5" class="borderDx">&nbsp;</td>
+			<td id="c6" class="borderSx">&nbsp;</td>
+			<td id="c7" class="">&nbsp;</td>
+			<td id="c8" class="">&nbsp;</td>
+			<td id="c9" class="borderDx">&nbsp;</td>
+			<td id="c10" class="borderSx">&nbsp;</td>
+			<td id="c11" class="">&nbsp;</td>
+			<td id="c12" class="borderDx">&nbsp;</td>
+			<td id="c13" class="borderSx">&nbsp;</td>
+			<td id="c14" class="borderDx">&nbsp;</td>
+			<td id="c15" class="borderSx">&nbsp;</td>
+			<td id="c16" class="">&nbsp;</td>
+			<td id="c17" class="borderDx">&nbsp;</td>
+			<td id="c18" class="borderSx">&nbsp;</td>
+			<td id="c19" class="">&nbsp;</td>
+			<td id="c20" class="">&nbsp;</td>
+			<td id="c21" class="borderDx">&nbsp;</td>
+			<td id="c22" class="borderSx">&nbsp;</td>
+			<td id="c23" class="">&nbsp;</td>
+			<td id="c24" class="">&nbsp;</td>
+			<td id="c25" class="borderDx">&nbsp;</td>
+			<td id="c26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="d1" class="borderSx borderDx">&nbsp;</td>
+			<td id="d2" class="borderSx borderGiu">&nbsp;</td>
+			<td id="d3" class="borderGiu">&nbsp;</td>
+			<td id="d4" class="borderGiu">&nbsp;</td>
+			<td id="d5" class="borderDx borderGiu">&nbsp;</td>
+			<td id="d6" class="borderSx borderGiu">&nbsp;</td>
+			<td id="d7" class="borderGiu">&nbsp;</td>
+			<td id="d8" class="borderGiu">&nbsp;</td>
+			<td id="d9" class="borderDx borderGiu">&nbsp;</td>
+			<td id="d10" class="borderSx">&nbsp;</td>
+			<td id="d11" class="">&nbsp;</td>
+			<td id="d12" class="borderDx">&nbsp;</td>
+			<td id="d13" class="borderSx">&nbsp;</td>
+			<td id="d14" class="borderDx">&nbsp;</td>
+			<td id="d15" class="borderSx">&nbsp;</td>
+			<td id="d16" class="">&nbsp;</td>
+			<td id="d17" class="borderDx">&nbsp;</td>
+			<td id="d18" class="borderSx">&nbsp;</td>
+			<td id="d19" class="">&nbsp;</td>
+			<td id="d20" class="">&nbsp;</td>
+			<td id="d21" class="borderDx">&nbsp;</td>
+			<td id="d22" class="borderSx">&nbsp;</td>
+			<td id="d23" class="">&nbsp;</td>
+			<td id="d24" class="">&nbsp;</td>
+			<td id="d25" class="borderDx">&nbsp;</td>
+			<td id="d26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="e1" class="borderSx borderDx">&nbsp;</td>
+			<td id="e2" class="borderSx borderSu">&nbsp;</td>
+			<td id="e3" class="borderSu">&nbsp;</td>
+			<td id="e4" class="borderSu">&nbsp;</td>
+			<td id="e5" class="borderDx borderSu">&nbsp;</td>
+			<td id="e6" class="borderSx borderSu">&nbsp;</td>
+			<td id="e7" class="borderSu">&nbsp;</td>
+			<td id="e8" class="borderSu">&nbsp;</td>
+			<td id="e9" class="borderDx borderSu">&nbsp;</td>
+			<td id="e10" class="borderSx ">&nbsp;</td>
+			<td id="e11" class="">&nbsp;</td>
+			<td id="e12" class="borderDx ">&nbsp;</td>
+			<td id="e13" class="borderSx">&nbsp;</td>
+			<td id="e14" class="borderDx">&nbsp;</td>
+			<td id="e15" class="borderSx">&nbsp;</td>
+			<td id="e16" class="">&nbsp;</td>
+			<td id="e17" class="borderDx">&nbsp;</td>
+			<td id="e18" class="borderSx borderGiu">&nbsp;</td>
+			<td id="e19" class="borderGiu">&nbsp;</td>
+			<td id="e20" class="borderGiu">&nbsp;</td>
+			<td id="e21" class="borderDx borderGiu">&nbsp;</td>
+			<td id="e22" class="borderSx borderGiu">&nbsp;</td>
+			<td id="e23" class="borderGiu">&nbsp;</td>
+			<td id="e24" class="borderGiu">&nbsp;</td>
+			<td id="e25" class="borderDx borderGiu">&nbsp;</td>
+			<td id="e26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="f1" class="borderSx borderDx">&nbsp;</td>
+			<td id="f2" class="borderSx">&nbsp;</td>
+			<td id="f3" class="">&nbsp;</td>
+			<td id="f4" class="">&nbsp;</td>
+			<td id="f5" class="borderDx">&nbsp;</td>
+			<td id="f6" class="borderSx">&nbsp;</td>
+			<td id="f7" class="">&nbsp;</td>
+			<td id="f8" class="">&nbsp;</td>
+			<td id="f9" class="borderDx">&nbsp;</td>
+			<td id="f10" class="borderSx borderGiu">&nbsp;</td>
+			<td id="f11" class="borderGiu">&nbsp;</td>
+			<td id="f12" class="borderDx borderGiu">&nbsp;</td>
+			<td id="f13" class="borderSx">&nbsp;</td>
+			<td id="f14" class="borderDx">&nbsp;</td>
+			<td id="f15" class="borderSx borderGiu">&nbsp;</td>
+			<td id="f16" class="borderGiu">&nbsp;</td>
+			<td id="f17" class="borderDx borderGiu">&nbsp;</td>
+			<td id="f18" class="borderSx borderSu">&nbsp;</td>
+			<td id="f19" class="borderSu">&nbsp;</td>
+			<td id="f20" class="borderSu">&nbsp;</td>
+			<td id="f21" class="borderDx borderSu">&nbsp;</td>
+			<td id="f22" class="borderSx borderSu">&nbsp;</td>
+			<td id="f23" class="borderSu">&nbsp;</td>
+			<td id="f24" class="borderSu">&nbsp;</td>
+			<td id="f25" class="borderDx borderSu">&nbsp;</td>
+			<td id="f26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="g1" class="borderSx borderDx">&nbsp;</td>
+			<td id="g2" class="borderSx">&nbsp;</td>
+			<td id="g3" class="">&nbsp;</td>
+			<td id="g4" class="">&nbsp;</td>
+			<td id="g5" class="borderDx">&nbsp;</td>
+			<td id="g6" class="borderSx">&nbsp;</td>
+			<td id="g7" class="">&nbsp;</td>
+			<td id="g8" class="">&nbsp;</td>
+			<td id="g9" class="borderDx">&nbsp;</td>
+			<td id="g10" class="borderSx borderSu">&nbsp;</td>
+			<td id="g11" class="borderSu borderGiu">&nbsp;</td>
+			<td id="g12" class="borderSu borderGiu">&nbsp;</td>
+			<td id="g13" class="borderGiu">&nbsp;</td>
+			<td id="g14" class="borderGiu">&nbsp;</td>
+			<td id="g15" class="borderSu borderGiu">&nbsp;</td>
+			<td id="g16" class="borderSu borderGiu">&nbsp;</td>
+			<td id="g17" class="borderDx borderSu">&nbsp;</td>
+			<td id="g18" class="borderSx ">&nbsp;</td>
+			<td id="g19" class="">&nbsp;</td>
+			<td id="g20" class="">&nbsp;</td>
+			<td id="g21" class="borderDx ">&nbsp;</td>
+			<td id="g22" class="borderSx ">&nbsp;</td>
+			<td id="g23" class="">&nbsp;</td>
+			<td id="g24" class="">&nbsp;</td>
+			<td id="g25" class="borderDx ">&nbsp;</td>
+			<td id="g26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="h1" class="borderSx borderDx">&nbsp;</td>
+			<td id="h2" class="borderSx">&nbsp;</td>
+			<td id="h3" class="">&nbsp;</td>
+			<td id="h4" class="">&nbsp;</td>
+			<td id="h5" class="borderDx">&nbsp;</td>
+			<td id="h6" class="borderSx">&nbsp;</td>
+			<td id="h7" class="">&nbsp;</td>
+			<td id="h8" class="">&nbsp;</td>
+			<td id="h9" class="borderDx">&nbsp;</td>
+			<td id="h10" class="borderSx borderDx">&nbsp;</td>
+			<td id="h11" class="borderSx borderSu">&nbsp;</td>
+			<td id="h12" class="borderSu ">&nbsp;</td>
+			<td id="h13" class="borderSu">&nbsp;</td>
+			<td id="h14" class="borderSu">&nbsp;</td>
+			<td id="h15" class="borderSu">&nbsp;</td>
+			<td id="h16" class="borderSu borderDx">&nbsp;</td>
+			<td id="h17" class="borderSx borderDx">&nbsp;</td>
+			<td id="h18" class="borderSx ">&nbsp;</td>
+			<td id="h19" class="">&nbsp;</td>
+			<td id="h20" class="">&nbsp;</td>
+			<td id="h21" class="borderDx ">&nbsp;</td>
+			<td id="h22" class="borderSx ">&nbsp;</td>
+			<td id="h23" class="">&nbsp;</td>
+			<td id="h24" class="">&nbsp;</td>
+			<td id="h25" class="borderDx ">&nbsp;</td>
+			<td id="h26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="i1" class="borderSx borderDx">&nbsp;</td>
+			<td id="i2" class="borderSx borderGiu">&nbsp;</td>
+			<td id="i3" class="borderGiu">&nbsp;</td>
+			<td id="i4" class="borderGiu">&nbsp;</td>
+			<td id="i5" class="borderDx borderGiu">&nbsp;</td>
+			<td id="i6" class="borderSx borderGiu">&nbsp;</td>
+			<td id="i7" class="borderGiu">&nbsp;</td>
+			<td id="i8" class="borderGiu">&nbsp;</td>
+			<td id="i9" class="borderDx borderGiu">&nbsp;</td>
+			<td id="i10" class="borderSx borderDx">&nbsp;</td>
+			<td id="i11" class="borderSx">&nbsp;</td>
+			<td id="i12" class="">&nbsp;</td>
+			<td id="i13" class="">&nbsp;</td>
+			<td id="i14" class="">&nbsp;</td>
+			<td id="i15" class="">&nbsp;</td>
+			<td id="i16" class="borderDx">&nbsp;</td>
+			<td id="i17" class="borderSx borderDx">&nbsp;</td>
+			<td id="i18" class="borderSx borderGiu">&nbsp;</td>
+			<td id="i19" class="borderGiu">&nbsp;</td>
+			<td id="i20" class="borderGiu">&nbsp;</td>
+			<td id="i21" class="borderDx borderGiu">&nbsp;</td>
+			<td id="i22" class="borderSx borderGiu">&nbsp;</td>
+			<td id="i23" class="borderGiu">&nbsp;</td>
+			<td id="i24" class="borderGiu">&nbsp;</td>
+			<td id="i25" class="borderDx borderGiu">&nbsp;</td>
+			<td id="i26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="j1" class="borderSx">&nbsp;</td>
+			<td id="j2" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j3" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j4" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j5" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j6" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j7" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j8" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j9" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j10" class="borderDx">&nbsp;</td>
+			<td id="j11" class="borderSx">&nbsp;</td>
+			<td id="j12" class="">&nbsp;</td>
+			<td id="j13" class="">&nbsp;</td>
+			<td id="j14" class="">&nbsp;</td>
+			<td id="j15" class="">&nbsp;</td>
+			<td id="j16" class="borderDx">&nbsp;</td>
+			<td id="j17" class="borderSx">&nbsp;</td>
+			<td id="j18" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j19" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j20" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j21" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j22" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j23" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j24" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j25" class="borderSu borderGiu">&nbsp;</td>
+			<td id="j26" class="borderDx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="k1" class="borderSx borderDx">&nbsp;</td>
+			<td id="k2" class="borderSx borderSu">&nbsp;</td>
+			<td id="k3" class="borderSu">&nbsp;</td>
+			<td id="k4" class="borderSu">&nbsp;</td>
+			<td id="k5" class="borderDx borderSu">&nbsp;</td>
+			<td id="k6" class="borderSx borderSu">&nbsp;</td>
+			<td id="k7" class="borderDx borderSu">&nbsp;</td>
+			<td id="k8" class="borderSx borderSu">&nbsp;</td>
+			<td id="k9" class="borderDx borderSu">&nbsp;</td>
+			<td id="k10" class="borderSx borderDx">&nbsp;</td>
+			<td id="k11" class="borderSx">&nbsp;</td>
+			<td id="k12" class="">&nbsp;</td>
+			<td id="k13" class="">&nbsp;</td>
+			<td id="k14" class="">&nbsp;</td>
+			<td id="k15" class="">&nbsp;</td>
+			<td id="k16" class="borderDx">&nbsp;</td>
+			<td id="k17" class="borderSx borderDx">&nbsp;</td>
+			<td id="k18" class="borderSx borderSu">&nbsp;</td>
+			<td id="k19" class="borderSu">&nbsp;</td>
+			<td id="k20" class="borderSu">&nbsp;</td>
+			<td id="k21" class="borderDx borderSu">&nbsp;</td>
+			<td id="k22" class="borderSx borderSu">&nbsp;</td>
+			<td id="k23" class="borderSu">&nbsp;</td>
+			<td id="k24" class="borderSu">&nbsp;</td>
+			<td id="k25" class="borderDx borderSu">&nbsp;</td>
+			<td id="k26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="l1" class="borderSx borderDx">&nbsp;</td>
+			<td id="l2" class="borderSx">&nbsp;</td>
+			<td id="l3" class="">&nbsp;</td>
+			<td id="l4" class="">&nbsp;</td>
+			<td id="l5" class="borderDx">&nbsp;</td>
+			<td id="l6" class="borderSx">&nbsp;</td>
+			<td id="l7" class="borderDx">&nbsp;</td>
+			<td id="l8" class="borderSx">&nbsp;</td>
+			<td id="l9" class="borderDx">&nbsp;</td>
+			<td id="l10" class="borderSx borderDx">&nbsp;</td>
+			<td id="l11" class="borderSx borderGiu">&nbsp;</td>
+			<td id="l12" class="borderGiu">&nbsp;</td>
+			<td id="l13" class="borderGiu">&nbsp;</td>
+			<td id="l14" class="borderGiu">&nbsp;</td>
+			<td id="l15" class="borderGiu">&nbsp;</td>
+			<td id="l16" class="borderDx borderGiu">&nbsp;</td>
+			<td id="l17" class="borderSx borderDx">&nbsp;</td>
+			<td id="l18" class="borderSx">&nbsp;</td>
+			<td id="l19" class="">&nbsp;</td>
+			<td id="l20" class="">&nbsp;</td>
+			<td id="l21" class="borderDx ">&nbsp;</td>
+			<td id="l22" class="borderSx ">&nbsp;</td>
+			<td id="l23" class="">&nbsp;</td>
+			<td id="l24" class="">&nbsp;</td>
+			<td id="l25" class="borderDx">&nbsp;</td>
+			<td id="l26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="m1" class="borderSx borderDx">&nbsp;</td>
+			<td id="m2" class="borderSx">&nbsp;</td>
+			<td id="m3" class="">&nbsp;</td>
+			<td id="m4" class="">&nbsp;</td>
+			<td id="m5" class="borderDx">&nbsp;</td>
+			<td id="m6" class="borderSx borderGiu">&nbsp;</td>
+			<td id="m7" class="borderDx borderGiu">&nbsp;</td>
+			<td id="m8" class="borderSx borderGiu">&nbsp;</td>
+			<td id="m9" class="borderDx borderGiu">&nbsp;</td>
+			<td id="m10" class="borderSx borderGiu">&nbsp;</td>
+			<td id="m11" class="borderSu borderGiu">&nbsp;</td>
+			<td id="m12" class="borderSu borderGiu">&nbsp;</td>
+			<td id="m13" class="borderSu">&nbsp;</td>
+			<td id="m14" class="borderSu">&nbsp;</td>
+			<td id="m15" class="borderSu borderGiu">&nbsp;</td>
+			<td id="m16" class="borderSu borderGiu">&nbsp;</td>
+			<td id="m17" class="borderDx borderGiu">&nbsp;</td>
+			<td id="m18" class="borderSx borderGiu">&nbsp;</td>
+			<td id="m19" class="">&nbsp;</td>
+			<td id="m20" class="">&nbsp;</td>
+			<td id="m21" class="borderDx ">&nbsp;</td>
+			<td id="m22" class="borderSx ">&nbsp;</td>
+			<td id="m23" class="">&nbsp;</td>
+			<td id="m24" class="">&nbsp;</td>
+			<td id="m25" class="borderDx">&nbsp;</td>
+			<td id="m26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="n1" class="borderSx borderDx">&nbsp;</td>
+			<td id="n2" class="borderSx borderGiu">&nbsp;</td>
+			<td id="n3" class="borderGiu">&nbsp;</td>
+			<td id="n4" class="borderGiu">&nbsp;</td>
+			<td id="n5" class="borderDx borderGiu">&nbsp;</td>
+			<td id="n6" class="borderSx borderSu">&nbsp;</td>
+			<td id="n7" class="borderSu">&nbsp;</td>
+			<td id="n8" class="borderSu">&nbsp;</td>
+			<td id="n9" class="borderDx borderSu">&nbsp;</td>
+			<td id="n10" class="borderSx borderSu">&nbsp;</td>
+			<td id="n11" class="borderSu">&nbsp;</td>
+			<td id="n12" class="borderDx borderSu">&nbsp;</td>
+			<td id="n13" class="borderSx">&nbsp;</td>
+			<td id="n14" class="borderDx">&nbsp;</td>
+			<td id="n15" class="borderSx borderSu">&nbsp;</td>
+			<td id="n16" class="borderSu">&nbsp;</td>
+			<td id="n17" class="borderSu">&nbsp;</td>
+			<td id="n18" class="borderDx borderSu">&nbsp;</td>
+			<td id="n19" class="borderSx borderGiu">&nbsp;</td>
+			<td id="n20" class="borderGiu">&nbsp;</td>
+			<td id="n21" class="borderDx borderGiu">&nbsp;</td>
+			<td id="n22" class="borderSx borderGiu">&nbsp;</td>
+			<td id="n23" class="borderGiu">&nbsp;</td>
+			<td id="n24" class="borderGiu">&nbsp;</td>
+			<td id="n25" class="borderDx borderGiu">&nbsp;</td>
+			<td id="n26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="o1" class="borderSx borderDx">&nbsp;</td>
+			<td id="o2" class="borderSx borderSu">&nbsp;</td>
+			<td id="o3" class="borderSu">&nbsp;</td>
+			<td id="o4" class="borderSu">&nbsp;</td>
+			<td id="o5" class="borderDx borderSu">&nbsp;</td>
+			<td id="o6" class="borderSx">&nbsp;</td>
+			<td id="o7" class="">&nbsp;</td>
+			<td id="o8" class="">&nbsp;</td>
+			<td id="o9" class="borderDx">&nbsp;</td>
+			<td id="o10" class="borderSx">&nbsp;</td>
+			<td id="o11" class="">&nbsp;</td>
+			<td id="o12" class="borderDx">&nbsp;</td>
+			<td id="o13" class="borderSx">&nbsp;</td>
+			<td id="o14" class="borderDx">&nbsp;</td>
+			<td id="o15" class="borderSx">&nbsp;</td>
+			<td id="o16" class="">&nbsp;</td>
+			<td id="o17" class="">&nbsp;</td>
+			<td id="o18" class="borderDx">&nbsp;</td>
+			<td id="o19" class="borderSx borderSu">&nbsp;</td>
+			<td id="o20" class="borderSu">&nbsp;</td>
+			<td id="o21" class="borderDx borderSu">&nbsp;</td>
+			<td id="o22" class="borderSx borderSu">&nbsp;</td>
+			<td id="o23" class="borderSu">&nbsp;</td>
+			<td id="o24" class="borderSu">&nbsp;</td>
+			<td id="o25" class="borderDx borderSu">&nbsp;</td>
+			<td id="o26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="p1" class="borderSx borderDx">&nbsp;</td>
+			<td id="p2" class="borderSx">&nbsp;</td>
+			<td id="p3" class="">&nbsp;</td>
+			<td id="p4" class="">&nbsp;</td>
+			<td id="p5" class="borderDx">&nbsp;</td>
+			<td id="p6" class="borderSx">&nbsp;</td>
+			<td id="p7" class="">&nbsp;</td>
+			<td id="p8" class="">&nbsp;</td>
+			<td id="p9" class="borderDx">&nbsp;</td>
+			<td id="p10" class="borderSx">&nbsp;</td>
+			<td id="p11" class="">&nbsp;</td>
+			<td id="p12" class="borderDx">&nbsp;</td>
+			<td id="p13" class="borderSx">&nbsp;</td>
+			<td id="p14" class="borderDx">&nbsp;</td>
+			<td id="p15" class="borderSx">&nbsp;</td>
+			<td id="p16" class="">&nbsp;</td>
+			<td id="p17" class="">&nbsp;</td>
+			<td id="p18" class="borderDx">&nbsp;</td>
+			<td id="p19" class="borderSx">&nbsp;</td>
+			<td id="p20" class="">&nbsp;</td>
+			<td id="p21" class="borderDx">&nbsp;</td>
+			<td id="p22" class="borderSx">&nbsp;</td>
+			<td id="p23" class="">&nbsp;</td>
+			<td id="p24" class="">&nbsp;</td>
+			<td id="p25" class="borderDx">&nbsp;</td>
+			<td id="p26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="q1" class="borderSx borderDx">&nbsp;</td>
+			<td id="q2" class="borderSx">&nbsp;</td>
+			<td id="q3" class="">&nbsp;</td>
+			<td id="q4" class="">&nbsp;</td>
+			<td id="q5" class="borderDx">&nbsp;</td>
+			<td id="q6" class="borderSx">&nbsp;</td>
+			<td id="q7" class="">&nbsp;</td>
+			<td id="q8" class="">&nbsp;</td>
+			<td id="q9" class="borderDx">&nbsp;</td>
+			<td id="q10" class="borderSx">&nbsp;</td>
+			<td id="q11" class="">&nbsp;</td>
+			<td id="q12" class="borderDx">&nbsp;</td>
+			<td id="q13" class="borderSx">&nbsp;</td>
+			<td id="q14" class="borderDx">&nbsp;</td>
+			<td id="q15" class="borderSx">&nbsp;</td>
+			<td id="q16" class="">&nbsp;</td>
+			<td id="q17" class="">&nbsp;</td>
+			<td id="q18" class="borderDx">&nbsp;</td>
+			<td id="q19" class="borderSx">&nbsp;</td>
+			<td id="q20" class="">&nbsp;</td>
+			<td id="q21" class="borderDx">&nbsp;</td>
+			<td id="q22" class="borderSx">&nbsp;</td>
+			<td id="q23" class="">&nbsp;</td>
+			<td id="q24" class="">&nbsp;</td>
+			<td id="q25" class="borderDx">&nbsp;</td>
+			<td id="q26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="r1" class="borderSx borderDx">&nbsp;</td>
+			<td id="r2" class="borderSx borderGiu">&nbsp;</td>
+			<td id="r3" class="borderGiu">&nbsp;</td>
+			<td id="r4" class="borderGiu">&nbsp;</td>
+			<td id="r5" class="borderDx borderGiu">&nbsp;</td>
+			<td id="r6" class="borderSx borderGiu">&nbsp;</td>
+			<td id="r7" class="borderGiu">&nbsp;</td>
+			<td id="r8" class="borderGiu">&nbsp;</td>
+			<td id="r9" class="borderDx borderGiu">&nbsp;</td>
+			<td id="r10" class="borderSx borderGiu">&nbsp;</td>
+			<td id="r11" class="borderGiu">&nbsp;</td>
+			<td id="r12" class="borderDx borderGiu">&nbsp;</td>
+			<td id="r13" class="borderSx">&nbsp;</td>
+			<td id="r14" class="borderDx">&nbsp;</td>
+			<td id="r15" class="borderSx borderGiu">&nbsp;</td>
+			<td id="r16" class="borderGiu">&nbsp;</td>
+			<td id="r17" class="borderGiu">&nbsp;</td>
+			<td id="r18" class="borderDx borderGiu">&nbsp;</td>
+			<td id="r19" class="borderSx borderGiu">&nbsp;</td>
+			<td id="r20" class="borderGiu">&nbsp;</td>
+			<td id="r21" class="borderDx borderGiu">&nbsp;</td>
+			<td id="r22" class="borderSx borderGiu">&nbsp;</td>
+			<td id="r23" class="borderGiu">&nbsp;</td>
+			<td id="r24" class="borderGiu">&nbsp;</td>
+			<td id="r25" class="borderDx borderGiu">&nbsp;</td>
+			<td id="r26" class="borderDx borderSx">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="s1" class="borderSx borderGiu">&nbsp;</td>
+			<td id="s2" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s3" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s4" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s5" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s6" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s7" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s8" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s9" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s10" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s11" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s12" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s13" class="borderGiu">&nbsp;</td>
+			<td id="s14" class="borderGiu">&nbsp;</td>
+			<td id="s15" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s16" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s17" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s18" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s19" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s20" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s21" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s22" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s23" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s24" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s25" class="borderSu borderGiu">&nbsp;</td>
+			<td id="s26" class="borderDx borderGiu">&nbsp;</td>
+		</tr>
+	</table>
+	</div>
+	<div id="risultato" class="risultato">&nbsp;</div>
+	<br/>
+	<div id="mostroInfoArea" style="visibility: hidden; display: none;">
+		<span class="mostroInfo" id="mostroNome">Nome</span>
+		<br>
+		<img id="mostroImg" class="mostroImg" src="img/mostri/gargoyle.png"/>
+		<span class="mostroInfo">Movimento:</span>&nbsp;
+		<span id="mostroMov">4</span>&nbsp;caselle
+		<br>
+		<span class="mostroInfo">Attacco:</span>&nbsp;
+		<span id="mostroAtt">2</span>&nbsp;dadi
+		<br>
+		<span class="mostroInfo">Difesa:</span>&nbsp;
+		<span id="mostroDif">2</span>&nbsp;dadi
+		<br>
+		<span class="mostroInfo">Punti corpo:</span>&nbsp;
+		<span id="mostroCor">1</span>
+		<br>
+		<span class="mostroInfo">Punti mente:</span>&nbsp;
+		<span id="mostroMen">2</span>
+		<br>
+		<span class="mostroInfo">Comportamento:</span>&nbsp;
+		<span id="mostroCom">Attacca sempre quello più brutto</span>
+	</div>	
+	<div id="popupMenu" class="popupMenu">
+	</div>
+</div>
+</body>
+</html>

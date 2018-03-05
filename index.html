@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Solo Quest</title>
+<link rel="stylesheet" href="solitario.css"/>
+<script type="text/javascript" src="fx.js" charset="UTF-8"></script>
+<script type="text/javascript" src="solitario.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	getJsonAvventure();
+	
+	function popolaSelect(){
+		fadeIn();
+		for (var i=0; i<avventure.length; i++){
+			var avventura = avventure[i];
+			var option = document.createElement("option");
+			option.value = avventura;
+			var dati = eval("dati"+avventura);
+			option.innerHTML = dati.nome;
+			document.getElementById("selectAvventura").appendChild(option);
+		}
+	}
+	
+	function scegliAvventura(){
+		var avventura = document.getElementById("selectAvventura").value;
+		changePage("testo.html#"+avventura);
+	}
+	//document.body.className += ' fade-out';	
+	
+	window.onload = popolaSelect;
+</script>
+</head>
+<body class="buio">
+<div class="container">
+	<h1>Solo Quest</h1>	
+	<div class="centralContent">
+		Scegli l'avventura:<br><br>
+		<select id="selectAvventura" onchange="scegliAvventura()">
+		<option value=""></option>
+		</select>
+	</div>	
+</div>
+</body>
+</html>
