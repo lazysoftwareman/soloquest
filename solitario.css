@@ -37,7 +37,7 @@ body.fade-out {
 
 .container {
 	padding: 5vh 5vw 5vh 5vw;
-	height: 90vh;
+	height: 90%;
 	font-size: 1em;
 	font-family: primitive;	
 	overflow: hidden;
@@ -65,7 +65,7 @@ input, select {
 }
 #tabelloneContainer {
 	overflow: auto;
-	height: 80vh;
+	height: 90%;
 	max-width: 90vw;
 	position: relative;
 }
