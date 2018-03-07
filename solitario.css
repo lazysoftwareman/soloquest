@@ -150,13 +150,13 @@ input, select {
 	border: 1vh solid black;
     box-shadow: 0 2vh 4vh 0 rgba(0,0,0,0.5);
 	padding: 5vw;
-    width: 10px;
+    width: 60vw;
 	height: 10px;
 	display: none;	
     position: absolute;
 	background-image: url(pergamena.jpg);
 	overflow: auto;
-	transition: width 1s, height 1s;
+	transition: height 1s;
 }
 
 .info {

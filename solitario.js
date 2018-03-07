@@ -93,6 +93,7 @@ function getDatiAvventura() {
 }
 
 function popuppa(risultato){
+	popupAperto = false;
 	const popup = document.getElementById('risultato');
 	popup.style.position = "absolute";	
 	popup.innerHTML = "";
@@ -104,7 +105,7 @@ function popuppa(risultato){
 	popup.style.zIndex = 30;
 	setTimeout(function() {fadeInPopup(popup, risultato)}, 10);
 	// fadeInPopup(popup, risultato);
-	event.stopPropagation();
+	setTimeout(function() {popupAperto = true}, 200);
 }
 
 function stampArray(array){
@@ -115,18 +116,23 @@ function stampArray(array){
 	return stringa;
 }
 
+var menuAperto = false;
+var popupAperto = false;
+
 // Close the dropdown if the user clicks outside of it
  window.onclick = function(event) {
 	if (!event.target.matches('.popupMenu')) {
 		const menu = document.getElementById("popupMenu");
-		if (menu && menu.style.display == "block"){
+		if (menuAperto && menu && menu.style.display == "block"){
 			menu.style.display = "none";
+			menuAperto = false;
 		}
 	}
 	if (!event.target.matches('.risultato')) {
 		const popup = document.getElementById("risultato");
-		if (popup && popup.style.display == "block"){
+		if (popupAperto && popup && popup.style.display == "block"){
 			popup.style.display = "none";
+			popupAperto = false;
 		}
 	}
 }
@@ -536,10 +542,11 @@ function visualizzaMostro (mostro, casella) {
 	immagine.style.marginTop = "1px";
 	immagine.id = "mostro"+casella;
 	immagine.onclick = function(event){
+		menuAperto = false;
 		var x = event.clientX;
 		var y = event.clientY;
 		mostraMenuMostro(mostro, "mostro"+casella, x, y);
-		event.stopPropagation();
+		setTimeout(function() {menuAperto = true}, 200);
 	};
 }
 
@@ -570,10 +577,11 @@ function visualizzaEvento (evento) {
 	cella.style.cursor = "pointer";
 	cella.innerHTML = evento.lettera;
 	cella.onclick = function(event){
+		menuAperto = false;
 		var x = event.clientX;
 		var y = event.clientY;
 		mostraBottoni(evento, x, y);
-		event.stopPropagation();
+		setTimeout(function() {menuAperto = true}, 200);
 	};
 }
 
@@ -606,10 +614,11 @@ function visualizzaAzioniStanza (casella, evento){
 	immagine.style.zIndex = 10;
 	immagine.style.cursor = "pointer";
 	immagine.onclick = function(event){
+		menuAperto = false;
 		var x = event.clientX;
 		var y = event.clientY;
 		mostraMenuStanza(evento, x, y);
-		event.stopPropagation();
+		setTimeout(function() {menuAperto = true}, 200);
 	};
 }
 
