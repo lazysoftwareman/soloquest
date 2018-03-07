@@ -116,7 +116,24 @@ function stampArray(array){
 }
 
 // Close the dropdown if the user clicks outside of it
- window.onclick = function(event) {
+ /*window.onclick = function(event) {
+	if (!event.target.matches('.popupMenu')) {
+		const menu = document.getElementById("popupMenu");
+		if (menu && menu.style.display == "block"){
+			menu.style.display = "none";
+		}
+	}
+	if (!event.target.matches('.risultato')) {
+		const popup = document.getElementById("risultato");
+		if (popup && popup.style.display == "block"){
+			popup.style.display = "none";
+		}
+	}
+}*/
+window.addEventListener("click", chiudiPoppuppi);
+window.addEventListener("touchend", chiudiPoppuppi);
+
+function chiudiPoppuppi(event) {
 	if (!event.target.matches('.popupMenu')) {
 		const menu = document.getElementById("popupMenu");
 		if (menu && menu.style.display == "block"){
