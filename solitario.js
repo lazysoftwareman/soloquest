@@ -94,17 +94,14 @@ function getDatiAvventura() {
 
 function popuppa(risultato){
 	const popup = document.getElementById('risultato');
+	popup.style.display = "none";
 	popup.style.position = "absolute";	
 	popup.innerHTML = "";
-    popup.style.width= "10px";	
-	popup.style.height= "10px";	
     popup.style.top = "30vh";
     popup.style.left = "15vw";
-	popup.style.display = "block";
+	//popup.style.display = "block";
 	popup.style.zIndex = 30;
-	setTimeout(function() {fadeInPopup(popup, risultato)}, 10);
-	// fadeInPopup(popup, risultato);
-	event.stopPropagation();
+	rallentaMostraPopup(popup, risultato);
 }
 
 function stampArray(array){

@@ -26,8 +26,15 @@ function viewCell (casella, colore) {
 	casella.style.transition = "all 0.5s";
 }
 
-function fadeInPopup (popuppo, contenuto) {
-	popuppo.style.width = "60vw";
-	popuppo.style.height = "40vh";
-	setTimeout(function() { popuppo.innerHTML = contenuto; }, 1000);
+function rallentaMostraPopup (popuppo, contenuto){
+	setTimeout(function() {
+		popuppo.style.display = "block";
+		popuppo.innerHTML = contenuto;
+	}, 100);
 }
+
+// function fadeInPopup (popuppo, contenuto) {
+	// popuppo.style.width = "60vw";
+	// popuppo.style.height = "40vh";
+	// setTimeout(function() { popuppo.innerHTML = contenuto; }, 1000);
+// }

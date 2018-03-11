@@ -151,7 +151,7 @@ input, select {
     box-shadow: 0 2vh 4vh 0 rgba(0,0,0,0.5);
 	padding: 5vw;
     width: 60vw;
-	height: 10px;
+	height: 40vh;
 	display: none;	
     position: absolute;
 	background-image: url(pergamena.jpg);
