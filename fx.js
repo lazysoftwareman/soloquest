@@ -38,3 +38,20 @@ function rallentaMostraPopup (popuppo, contenuto){
 	// popuppo.style.height = "40vh";
 	// setTimeout(function() { popuppo.innerHTML = contenuto; }, 1000);
 // }
+
+function isAdiacente (casella, altra){
+	if (getLettera(casella) == getLettera(altra)){
+		const n1 = getNumeroNumero(casella);
+		const n2 = getNumeroNumero(altra);
+		return n1 >= n2-1 && n1 <= n2+1;
+	} else if (getNumero(casella) == getNumero(altra)){
+		const n1 = getLettera(casella).charCodeAt(0);
+		const n2 = getLettera(altra).charCodeAt(0);
+		return n1 >= n2-1 && n1 <= n2+1;
+	}
+}
+
+function riordinaCaselle (casella, caselle) {
+	var riordinate = [];
+	
+}

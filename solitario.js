@@ -221,56 +221,6 @@ function rendiVisibileTutto(){
 	}
 }
 
-function visualizzaContenutoOLD (caselle, isStanza){	
-	dCell = document.getElementById("a1").offsetWidth;
-	var porte = dati.porte;
-	var casPorte = trovaCasellePorte();
-	var casMobili = trovaCaselleMobili();
-	var casMostri = trovaCaselleMostri();
-	var casMuri = trovaCaselleMuri();
-	var casVisibilita = trovaCaselleVisibilita();
-	var casEventi = trovaCaselleEventi();
-	var stanza = isStanza? trovaStanza(caselle[0]): "corridoio";
-	for (var i=0; i<caselle.length; i++){
-		var casella = caselle[i];
-		if (caselleViste.indexOf(casella) < 0){
-			viewCell(document.getElementById(casella), colori[stanza]);			
-			//document.getElementById(casella).style.backgroundColor = colori[stanza];
-			//porte
-			if (casPorte.indexOf(casella) >= 0){
-				visualizzaPorta (trovaPortaInCasella(casella));
-			}
-			//mobili
-			if (casMobili.indexOf(casella) >= 0){
-				visualizzaMobile (trovaMobileInCasella(casella));
-			}
-			//mostri
-			if (casMostri.indexOf(casella) >= 0){
-				visualizzaMostro (trovaMostroInCasella(casella), casella);
-			}
-			//muri
-			if (casMuri.indexOf(casella) >= 0){
-				visualizzaMuro (trovaMuroInCasella(casella), casella);
-			}
-			//visibilita
-			if (casVisibilita.indexOf(casella) >= 0){
-				visualizzaVisibilita (trovaVisibilitaInCasella(casella));
-			}
-			//eventi
-			if (!isStanza){
-				if (casEventi.indexOf(casella) >= 0){
-					visualizzaEvento (trovaEventoInCasella(casella));
-				}
-			}
-			caselleViste.push(casella);
-		}
-	}
-	if (isStanza && stanzeViste.indexOf(stanza) < 0){
-		visualizzaAzioniStanza(caselle[0], trovaEventoInStanza(stanza));
-		stanzeViste.push(stanza);
-	}
-}
-
 function visualizzaContenuto (caselle, isStanza){	
 	dCell = document.getElementById("a1").offsetWidth;
 	var casPorte = trovaCasellePorte();
