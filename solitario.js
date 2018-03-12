@@ -221,7 +221,7 @@ function rendiVisibileTutto(){
 	}
 }
 
-function visualizzaContenuto (caselle, isStanza){	
+function visualizzaContenuto (original, isStanza){	
 	dCell = document.getElementById("a1").offsetWidth;
 	var casPorte = trovaCasellePorte();
 	var casMobili = trovaCaselleMobili();

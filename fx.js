@@ -51,7 +51,26 @@ function isAdiacente (casella, altra){
 	}
 }
 
-function riordinaCaselle (casella, caselle) {
+function riordinaCaselle (sorgente, caselle) {
 	var riordinate = [];
-	
+	var intermedie = [];
+	intermedie.push(sorgente);
+	for (var j=0; j<intermedie.length; j++){
+		var casella = intermedie[j];
+		for (var i=caselle.length-1; i>=0; i--){
+			var temp = caselle[i];
+			if (isAdiacente(casella, temp)){
+				intermedie.push(temp);
+				riordinate.push(temp);
+				caselle.splice(i,1);
+			}
+		}
+	}
+	return riordinate;	
+}
+
+function testaRiordina (){
+	var caselle = getCaselle("a1", "e5");
+	var riordinate = riordinaCaselle("c1", caselle);
+	alert ("Normale: " + stampArray (getCaselle("a1", "e5")) + "\nRiordinate: " + stampArray (riordinate));
 }
