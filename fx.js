@@ -54,7 +54,14 @@ function isAdiacente (casella, altra){
 function riordinaCaselle (sorgente, caselle) {
 	var riordinate = [];
 	var intermedie = [];
-	intermedie.push(sorgente);
+	if (sorgente instanceof Array){
+		for (var k=0; k<sorgente.length; k++){
+			intermedie.push(sorgente[k]);
+		}
+	} else {
+		intermedie.push(sorgente);
+	}
+	
 	for (var j=0; j<intermedie.length; j++){
 		var casella = intermedie[j];
 		for (var i=caselle.length-1; i>=0; i--){

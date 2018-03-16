@@ -193,13 +193,22 @@ function rendiVisibile(daOStanza, a){
 		rendiVisibileStanza(daOStanza);
 	} else {
 		var caselle = getCaselle(daOStanza, a);
-		visualizzaContenuto(caselle);
+		visualizzaContenuto(caselle, false);
 	}
 }
 
-function rendiVisibileStanza(stanza){
+function rendiVisibileSpread(origine, daOStanza, a){
+	if (!a){
+		rendiVisibileStanza(daOStanza, origine);
+	} else {
+		var caselle = getCaselle(daOStanza, a);
+		visualizzaContenuto(caselle, false, origine);
+	}
+}
+
+function rendiVisibileStanza(stanza, origine){
 	var caselle = stanze[stanza];
-	visualizzaContenuto(caselle, true);
+	visualizzaContenuto(caselle, true, origine);
 }
 
 function rendiVisibileTutto(){
@@ -221,7 +230,11 @@ function rendiVisibileTutto(){
 	}
 }
 
-function visualizzaContenuto (original, isStanza){	
+function visualizzaContenuto (original, isStanza, sorgente){	
+	var caselle = original;
+	if (sorgente){
+		caselle = riordinaCaselle (sorgente, original);
+	}
 	dCell = document.getElementById("a1").offsetWidth;
 	var casPorte = trovaCasellePorte();
 	var casMobili = trovaCaselleMobili();
@@ -429,6 +442,7 @@ function visualizzaPorta (porta) {
 }
 
 function apriPorta(porta, automatico){
+	var casPorta = getCaselle(porta.caselle.da, porta.caselle.a);
 	if (porta.vis1.da){
 		rendiVisibile (porta.vis1.da, porta.vis1.a);
 	} else {
@@ -445,6 +459,27 @@ function apriPorta(porta, automatico){
 		}
 		if (porta.azione){
 			eval(porta.azione);
+		}
+	}
+}
+
+function apriVisibilita(visib, automatico){
+	if (visib.vis1.da){
+		rendiVisibileSpread (visib.casella, visib.vis1.da, visib.vis1.a);
+	} else {
+		rendiVisibileSpread (visib.casella, visib.vis1);
+	}
+	if (visib.vis2.da){
+		rendiVisibileSpread (visib.casella, visib.vis2.da, visib.vis2.a);
+	} else {
+		rendiVisibileSpread (visib.casella, visib.vis2);
+	}
+	if (!automatico){
+		if (visib.testo){
+			popuppa(visib.testo);
+		}
+		if (visib.azione){
+			eval(visib.azione);
 		}
 	}
 }
@@ -547,7 +582,7 @@ function visualizzaVisibilita (visibilita) {
 	cella.title = "Clicca per mostrare cosa vede l'eroe";
 	cella.style.cursor = "pointer";
 	cella.onclick = function(){
-		apriPorta(visibilita);
+		apriVisibilita(visibilita);
 	};
 }
 
