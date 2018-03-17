@@ -51,12 +51,15 @@ function isAdiacente (casella, altra){
 	}
 }
 
-function riordinaCaselle (sorgente, caselle) {
+function riordinaCaselle (sorgente, daOrdinare) {
+	var caselle = daOrdinare.slice();
 	var riordinate = [];
 	var intermedie = [];
 	if (sorgente instanceof Array){
 		for (var k=0; k<sorgente.length; k++){
-			intermedie.push(sorgente[k]);
+			if (caselle.indexOf(sorgente[k]) >= 0){
+				intermedie.push(sorgente[k]);
+			}
 		}
 	} else {
 		intermedie.push(sorgente);
@@ -72,6 +75,9 @@ function riordinaCaselle (sorgente, caselle) {
 				caselle.splice(i,1);
 			}
 		}
+	}
+	if (riordinate.length == 0){
+		riordinate = caselle;
 	}
 	return riordinate;	
 }

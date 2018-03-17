@@ -232,6 +232,7 @@ function rendiVisibileTutto(){
 
 function visualizzaContenuto (original, isStanza, sorgente){	
 	var caselle = original;
+	var angolino = caselle[0];
 	if (sorgente){
 		caselle = riordinaCaselle (sorgente, original);
 	}
@@ -242,10 +243,10 @@ function visualizzaContenuto (original, isStanza, sorgente){
 	var casMuri = trovaCaselleMuri();
 	var casVisibilita = trovaCaselleVisibilita();
 	var casEventi = trovaCaselleEventi();
-	var stanza = isStanza? trovaStanza(caselle[0]): "corridoio";
+	var stanza = isStanza? trovaStanza(angolino): "corridoio";
 	visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisibilita, casEventi, stanza, caselle, 0, isStanza);
 	if (isStanza && stanzeViste.indexOf(stanza) < 0){
-		visualizzaAzioniStanza(caselle[0], trovaEventoInStanza(stanza));
+		visualizzaAzioniStanza(angolino, trovaEventoInStanza(stanza));
 		stanzeViste.push(stanza);
 	}
 }
@@ -444,14 +445,14 @@ function visualizzaPorta (porta) {
 function apriPorta(porta, automatico){
 	var casPorta = getCaselle(porta.caselle.da, porta.caselle.a);
 	if (porta.vis1.da){
-		rendiVisibile (porta.vis1.da, porta.vis1.a);
+		rendiVisibileSpread (casPorta, porta.vis1.da, porta.vis1.a);
 	} else {
-		rendiVisibile (porta.vis1);
+		rendiVisibileSpread (casPorta, porta.vis1);
 	}
 	if (porta.vis2.da){
-		rendiVisibile (porta.vis2.da, porta.vis2.a);
+		rendiVisibileSpread (casPorta, porta.vis2.da, porta.vis2.a);
 	} else {
-		rendiVisibile (porta.vis2);
+		rendiVisibileSpread (casPorta, porta.vis2);
 	}
 	if (!automatico){
 		if (porta.testo){
