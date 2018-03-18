@@ -93,6 +93,7 @@ function getDatiAvventura() {
 }
 
 function popuppa(risultato){
+	mostraOverlay();
 	const popup = document.getElementById('risultato');
 	popup.style.display = "none";
 	popup.style.position = "absolute";	
@@ -127,22 +128,35 @@ function stampArray(array){
 		}
 	}
 }*/
-window.addEventListener("click", chiudiPoppuppi);
-window.addEventListener("touchend", chiudiPoppuppi);
+// window.addEventListener("click", chiudiPoppuppi);
+// window.addEventListener("touchend", chiudiPoppuppi);
 
-function chiudiPoppuppi(event) {
-	if (!event.target.matches('.popupMenu')) {
-		const menu = document.getElementById("popupMenu");
-		if (menu && menu.style.display == "block"){
-			menu.style.display = "none";
-		}
+function chiudiPoppuppi() {
+	nascondiOverlay();
+	chiudiBottoni();
+	const popup = document.getElementById("risultato");
+	if (popup && popup.style.display == "block"){
+		popup.style.display = "none";
 	}
-	if (!event.target.matches('.risultato')) {
-		const popup = document.getElementById("risultato");
-		if (popup && popup.style.display == "block"){
-			popup.style.display = "none";
-		}
+}
+
+function chiudiBottoni() {
+	const menu = document.getElementById("popupMenu");
+	if (menu && menu.style.display == "block"){
+		menu.style.display = "none";
 	}
+}
+
+function mostraOverlay () {
+	var overlay = document.getElementById("overlay");
+	if (overlay.style.display == "none"){
+		overlay.style.display = "inline";
+	}
+}
+
+function nascondiOverlay () {
+	var overlay = document.getElementById("overlay");
+	overlay.style.display = "none";
 }
 
 function getLettera(casella){
@@ -708,14 +722,17 @@ function trovaAzione(evento, tipo){
 }
 
 function mostraBottoni(elemento, x, y) {
+	mostraOverlay();
 	const bottoni = elemento.azioni;
 	const menu = document.getElementById("popupMenu");
 	menu.innerHTML = "";
 	for (var i=0; i<bottoni.length; i++){
 		const bottone = bottoni[i];
 		var span = document.createElement("span");
-		span.onclick = function(){
+		span.onclick = function(){		
+			nascondiOverlay();
 			esegui(bottone);
+			chiudiBottoni();
 		}
 		span.innerHTML = bottone.label;
 		menu.appendChild (span);

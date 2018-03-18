@@ -145,6 +145,18 @@ input, select {
 	display:block;
 }
 
+.overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+    display: none;
+	background-color: black;
+	opacity: 0.3;
+	z-index: 15;
+}
+
 .risultato {
 	font-size: 12pt;
 	border: 1vh solid black;
