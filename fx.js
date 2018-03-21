@@ -26,11 +26,10 @@ function viewCell (casella, colore) {
 	casella.style.transition = "all 0.5s";
 }
 
-function rallentaMostraPopup (popuppo, contenuto){
-	setTimeout(function() {
-		popuppo.style.display = "block";
-		popuppo.innerHTML = contenuto;
-	}, 100);
+function fadeInPopup (popuppo, contenuto){
+	popuppo.style.display = "block";
+	popuppo.className = popuppo.className.replace("animate","animated fadeIn");
+	popuppo.innerHTML = contenuto;
 }
 
 // function fadeInPopup (popuppo, contenuto) {

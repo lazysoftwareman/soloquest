@@ -102,7 +102,7 @@ function popuppa(risultato){
     popup.style.left = "15vw";
 	//popup.style.display = "block";
 	popup.style.zIndex = 30;
-	rallentaMostraPopup(popup, risultato);
+	fadeInPopup(popup, risultato);
 }
 
 function stampArray(array){
@@ -135,6 +135,7 @@ function chiudiPoppuppi() {
 	nascondiOverlay();
 	chiudiBottoni();
 	const popup = document.getElementById("risultato");
+	popup.className.replace("animated fadeIn","animate");
 	if (popup && popup.style.display == "block"){
 		popup.style.display = "none";
 	}
