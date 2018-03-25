@@ -28,15 +28,34 @@ function viewCell (casella, colore) {
 
 function fadeInPopup (popuppo, contenuto){
 	popuppo.style.display = "block";
-	popuppo.className = popuppo.className.replace("animate","animated fadeIn");
+	popuppo.className = popuppo.className.replace("animate","animated fadeInDown");
 	popuppo.innerHTML = contenuto;
 }
 
-// function fadeInPopup (popuppo, contenuto) {
-	// popuppo.style.width = "60vw";
-	// popuppo.style.height = "40vh";
-	// setTimeout(function() { popuppo.innerHTML = contenuto; }, 1000);
-// }
+function fadeOutPopup (popuppo) {
+	popuppo.className = popuppo.className.replace("animated fadeInDown","animated fadeOutUp");
+	setTimeout(function() {
+		popuppo.className = popuppo.className.replace("animated fadeOutUp","animate");
+		if (popuppo && popuppo.style.display == "block"){
+			popuppo.style.display = "none";
+		}
+	}, 1000);
+}
+
+function fadeInBottoni (menu){
+	menu.style.display = "block";
+	menu.className = menu.className.replace("animate","animated fadeIn");
+}
+
+function fadeOutBottoni (menu) {
+	menu.className = menu.className.replace("animated fadeIn","animated fadeOut");
+	setTimeout(function() {
+		menu.className = menu.className.replace("animated fadeOut","animate");
+		if (menu && menu.style.display == "block"){
+			menu.style.display = "none";
+		}
+	}, 1000);
+}
 
 function isAdiacente (casella, altra){
 	if (getLettera(casella) == getLettera(altra)){

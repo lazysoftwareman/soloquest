@@ -135,17 +135,12 @@ function chiudiPoppuppi() {
 	nascondiOverlay();
 	chiudiBottoni();
 	const popup = document.getElementById("risultato");
-	popup.className.replace("animated fadeIn","animate");
-	if (popup && popup.style.display == "block"){
-		popup.style.display = "none";
-	}
+	fadeOutPopup(popup);
 }
 
 function chiudiBottoni() {
 	const menu = document.getElementById("popupMenu");
-	if (menu && menu.style.display == "block"){
-		menu.style.display = "none";
-	}
+	fadeOutBottoni(menu);
 }
 
 function mostraOverlay () {
@@ -737,11 +732,11 @@ function mostraBottoni(elemento, x, y) {
 		}
 		span.innerHTML = bottone.label;
 		menu.appendChild (span);
-	}
-	menu.style.position = "absolute";
-	menu.style.display = "block";	
+	}	
     posizionaMenu(menu, x, y);
 	menu.style.zIndex = 20;
+	menu.style.position = "absolute";
+	fadeInBottoni(menu);
 }
 
 function posizionaMenu(menu, x, y){
