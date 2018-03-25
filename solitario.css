@@ -26,6 +26,13 @@ body {
 	margin: 0;
 	background-image: url(pergamena.jpg);
 }
+.testoBody {
+	background-image: url('morcar.jpg');
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center top;
+    height: 100%;
+}
 body.buio {
     opacity: 0;
     transition: none;
