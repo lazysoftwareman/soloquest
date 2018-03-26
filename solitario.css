@@ -87,6 +87,20 @@ input, select {
 	padding: 2vw;
 }
 
+.testoContent {
+	text-align: center;
+	font-size: 2vh;
+	max-height: 75vh;
+	width: 90vw;
+	overflow: auto;
+	bottom: 5vh;
+	position: absolute;
+}
+.testoContent div {
+	padding: 2vw;
+	background-image: url(pergamena.jpg);
+}
+
 .titoloAvventura {
 	/* width: 100%; */
 	height: 10vh;
