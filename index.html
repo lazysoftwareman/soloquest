@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width">
 <title>Solo Quest</title>
 <link rel="stylesheet" href="solitario.css"/>
+<link rel="stylesheet" href="animate.css"/>
 <script type="text/javascript" src="fx.js" charset="UTF-8"></script>
 <script type="text/javascript" src="solitario.js" charset="UTF-8"></script>
 <script type="text/javascript">
@@ -12,6 +13,7 @@
 	
 	function popolaSelect(){
 		fadeIn();
+		zoomInLogo();
 		for (var i=0; i<avventure.length; i++){
 			var avventura = avventure[i];
 			var option = document.createElement("option");
@@ -20,6 +22,13 @@
 			option.innerHTML = dati.nome;
 			document.getElementById("selectAvventura").appendChild(option);
 		}
+	}
+	
+	function zoomInLogo() {
+		const logo = document.getElementById("logo");
+		setTimeout(function() {
+			logo.className = logo.className.replace("hidden","animated zoomIn");
+		}, 100);
 	}
 	
 	function scegliAvventura(){
@@ -33,7 +42,9 @@
 </head>
 <body class="buio">
 <div class="container">
-	<div class="logoContainer"><img id="logo" src="logo.png"/></div>
+	<div class="logoContainer">
+		<img id="logo" src="logo.png" class="hidden"/>
+	</div>
 	<div class="centralContent">
 		Scegli l'avventura:<br><br>
 		<select id="selectAvventura" onchange="scegliAvventura()">
