@@ -721,6 +721,8 @@ function mostraBottoni(elemento, x, y) {
 	mostraOverlay();
 	const bottoni = elemento.azioni;
 	const menu = document.getElementById("popupMenu");
+	menu.style.top = 0+"px";
+    menu.style.left = 0+"px";
 	menu.innerHTML = "";
 	for (var i=0; i<bottoni.length; i++){
 		const bottone = bottoni[i];
@@ -733,6 +735,7 @@ function mostraBottoni(elemento, x, y) {
 		span.innerHTML = bottone.label;
 		menu.appendChild (span);
 	}	
+	menu.style.display = "block";
     posizionaMenu(menu, x, y);
 	menu.style.zIndex = 20;
 	menu.style.position = "absolute";

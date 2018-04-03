@@ -43,7 +43,6 @@ function fadeOutPopup (popuppo) {
 }
 
 function fadeInBottoni (menu){
-	menu.style.display = "block";
 	menu.className = menu.className.replace("animate","animated fadeIn");
 }
 

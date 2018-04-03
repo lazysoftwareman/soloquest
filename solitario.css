@@ -216,6 +216,7 @@ input, select {
     display: block;
 	cursor: pointer;
 	border: 1px solid brown;
+    white-space: nowrap;
 }
 .show {
 	display:block;
