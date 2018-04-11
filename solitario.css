@@ -236,7 +236,13 @@ input, select {
 
 .risultato {
 	font-size: 12pt;
-	border: 1vh solid black;
+	border: 4vh solid transparent;
+	-webkit-border-image: url(bordoScroll.png) 50 repeat; /* Safari 3.1-5 */
+	-webkit-border-image-outset: 2vh;
+    -o-border-image: url(bordoScroll.png) 50 repeat; /* Opera 11-12.1 */
+	-o-border-image-outset: 2vh;
+    border-image: url(bordoScroll.png) 50 repeat;
+	border-image-outset: 2vh;
     box-shadow: 0 2vh 4vh 0 rgba(0,0,0,0.5);
 	padding: 5vw;
     width: 60vw;
