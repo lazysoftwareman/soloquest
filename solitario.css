@@ -144,16 +144,26 @@ input, select {
 .testoContent {
 	text-align: center;
 	font-size: 2vh;
-	max-height: 75vh;
-	width: 90vw;
+	max-height: 69vh;
+	width: 86vw;
 	overflow: auto;
 	bottom: 5vh;
 	position: absolute;
 	padding-bottom: 1vh;
 }
-.testoContent div {
-	padding: 2vw;
+.testoContent div {	
+	margin: 2vmin;
+	border: 4vmin solid transparent;
+	-webkit-border-image: url(bordoScroll.png) 50 repeat; /* Safari 3.1-5 */
+	-webkit-border-image-outset: 2vmin;
+    -o-border-image: url(bordoScroll.png) 50 repeat; /* Opera 11-12.1 */
+	-o-border-image-outset: 2vmin;
+    border-image: url(bordoScroll.png) 50 repeat;
+	border-image-outset: 2vmin;
+    box-shadow: 0 2vmin 4vmin 0 rgba(0,0,0,0.5);
+	padding: 1vmin;
 	background-image: url(pergamena.jpg);
+	overflow: auto;
 }
 
 .titoloAvventura {
