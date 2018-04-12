@@ -236,17 +236,17 @@ input, select {
 
 .risultato {
 	font-size: 12pt;
-	border: 4vh solid transparent;
+	border: 4vmin solid transparent;
 	-webkit-border-image: url(bordoScroll.png) 50 repeat; /* Safari 3.1-5 */
-	-webkit-border-image-outset: 2vh;
+	-webkit-border-image-outset: 2vmin;
     -o-border-image: url(bordoScroll.png) 50 repeat; /* Opera 11-12.1 */
-	-o-border-image-outset: 2vh;
+	-o-border-image-outset: 2vmin;
     border-image: url(bordoScroll.png) 50 repeat;
-	border-image-outset: 2vh;
-    box-shadow: 0 2vh 4vh 0 rgba(0,0,0,0.5);
-	padding: 5vw;
-    width: 60vw;
-	height: 40vh;
+	border-image-outset: 2vmin;
+    box-shadow: 0 2vmin 4vmin 0 rgba(0,0,0,0.5);
+	padding: 1vmin;
+    width: 56vw;
+	height: 36vh;
 	display: none;	
     position: absolute;
 	background-image: url(pergamena.jpg);
