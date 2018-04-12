@@ -153,7 +153,8 @@ input, select {
 }
 .testoContent div {	
 	margin: 2vmin;
-	border: 4vmin solid transparent;
+	border-style: solid;
+	border-width: 4vmin;
 	-webkit-border-image: url(bordoScroll.png) 50 repeat; /* Safari 3.1-5 */
 	-webkit-border-image-outset: 2vmin;
     -o-border-image: url(bordoScroll.png) 50 repeat; /* Opera 11-12.1 */
@@ -164,6 +165,11 @@ input, select {
 	padding: 1vmin;
 	background-image: url(pergamena.jpg);
 	overflow: auto;
+}
+@supports not (-webkit-overflow-scrolling: touch) {
+	.testoContent div {	
+		border-color: transparent;
+	}
 }
 
 .titoloAvventura {
