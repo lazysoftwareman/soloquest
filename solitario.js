@@ -235,7 +235,7 @@ function rendiVisibileTutto(){
 	var visibilita = dati.visibilita;
 	if (visibilita){
 		for (var i=0; i<visibilita.length; i++){
-			apriPorta(visibilita[i], true);
+			apriVisibilita(visibilita[i], true);
 		}
 	}
 }
@@ -540,7 +540,19 @@ function visualizzaMobile (mobile) {
 function visualizzaMostro (mostro, casella) {
 	const width = dCel-4;
 	const height = dCel-4;
-	const src = mostro.tipo;
+	const src = mostro.tipo == 'png' ? 'magoCaos' : mostro.tipo;
+	if (mostro.tipo == 'png'){
+		mostri ["png"] = {
+			"tipo" : "png",
+			"nome" : mostro.nome,
+			"movimento" : mostro.movimento,
+			"attacco" : mostro.attacco,
+			"difesa" : mostro.difesa,
+			"corpo" : mostro.corpo,
+			"mente" : mostro.mente,
+			"comportamento" : mostro.comportamento
+		};
+	}
 	var immagine = posizionaImmagine(src, width, height, document.getElementById(casella));	
 	immagine.style.marginLeft = "1px";
 	immagine.style.marginTop = "1px";

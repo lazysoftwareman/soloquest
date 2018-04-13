@@ -28,30 +28,42 @@ function viewCell (casella, colore) {
 
 function fadeInPopup (popuppo, contenuto){
 	popuppo.style.display = "block";
-	popuppo.className = popuppo.className.replace("animate","animated fadeInDown");
+	if (popuppo.className.includes("animated fadeOutUp")){
+		popuppo.className = popuppo.className.replace("animated fadeOutUp","animated fadeInDown");
+	} else if (popuppo.className.includes("animation")){ 
+		popuppo.className = popuppo.className.replace("animation","animated fadeInDown");
+	}
 	popuppo.innerHTML = contenuto;
 }
 
 function fadeOutPopup (popuppo) {
 	popuppo.className = popuppo.className.replace("animated fadeInDown","animated fadeOutUp");
 	setTimeout(function() {
-		popuppo.className = popuppo.className.replace("animated fadeOutUp","animate");
-		if (popuppo && popuppo.style.display == "block"){
-			popuppo.style.display = "none";
+		if (popuppo.className.includes("animated fadeOutUp")){
+			popuppo.className = popuppo.className.replace("animated fadeOutUp","animation");
+			if (popuppo && popuppo.style.display == "block"){
+				popuppo.style.display = "none";
+			}
 		}
 	}, 1000);
 }
 
 function fadeInBottoni (menu){
-	menu.className = menu.className.replace("animate","animated fadeIn");
+	if (menu.className.includes("animated fadeOut")){
+		menu.className = menu.className.replace("animated fadeOut","animated fadeIn");
+	} else if (menu.className.includes("animation")){
+		menu.className = menu.className.replace("animation","animated fadeIn");
+	}
 }
 
 function fadeOutBottoni (menu) {
 	menu.className = menu.className.replace("animated fadeIn","animated fadeOut");
 	setTimeout(function() {
-		menu.className = menu.className.replace("animated fadeOut","animate");
-		if (menu && menu.style.display == "block"){
-			menu.style.display = "none";
+		if (menu.className.includes("animated fadeOut")){
+			menu.className = menu.className.replace("animated fadeOut","animation");
+			if (menu && menu.style.display == "block"){
+				menu.style.display = "none";
+			}
 		}
 	}, 1000);
 }

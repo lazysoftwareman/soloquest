@@ -101,8 +101,8 @@ var datiSirRagnar = {
 	],
 	"porteSegrete" : [
 	{
-		"caselle": {"da": "n9", "a": "m9"},
-		"posizione": "S",
+		"caselle": {"da": "m9", "a": "n9"},
+		"posizione": "N",
 		"vis1": "so3",
 		"vis2": "so5"
 	}
@@ -121,7 +121,14 @@ var datiSirRagnar = {
 		"caselle": ["d16", "e17", "d20", "h20", "g24", "h25", "o9", "p8", "p10"]
 	},
 	{
-		"tipo": "magoCaos",
+		"tipo": "png",
+		"nome" : "Sir Ragnar",
+		"movimento" : "1d",
+		"attacco" : 0,
+		"difesa" : 2,
+		"corpo" : 2,
+		"mente" : 3,
+		"comportamento" : "Si muove subito dopo l'eroe che l'ha scoperto",
 		"caselle": ["l6"]
 	}
 	],
