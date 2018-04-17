@@ -1,0 +1,8 @@
+- Carte mostro
+- Tasto home
+- Togliere animazione menu
+- Icona tipo azione per stanze
+- Info con icona adhoc
+- Mostro errante linkata a info mostro
+- Regolamento
+- Linkare regolamento a menu
