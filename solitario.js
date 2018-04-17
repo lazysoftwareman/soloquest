@@ -140,6 +140,9 @@ function chiudiPoppuppi() {
 
 function chiudiBottoni() {
 	const menu = document.getElementById("popupMenu");
+	if (menu && menu.style.display == "block"){
+		menu.style.display = "none";
+	}
 	fadeOutBottoni(menu);
 }
 
@@ -620,8 +623,8 @@ function visualizzaScale (scale) {
 
 function visualizzaAzioniStanza (casella, evento){
 	const src = "menuStanza";
-	const height = dCel/2;
-	const width = dCel/2;
+	const height = dCel*0.6;
+	const width = dCel*0.6;
 	const immagine = posizionaImmagine (src, width, height, document.getElementById(casella));	
 	immagine.style.marginLeft = "-"+dB2+"px";
 	immagine.style.marginTop = "-"+dB2+"px";
@@ -751,7 +754,7 @@ function mostraBottoni(elemento, x, y) {
     posizionaMenu(menu, x, y);
 	menu.style.zIndex = 20;
 	menu.style.position = "absolute";
-	fadeInBottoni(menu);
+	//fadeInBottoni(menu);
 }
 
 function posizionaMenu(menu, x, y){

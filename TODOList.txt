@@ -1,8 +1,10 @@
 - Carte mostro
 - Tasto home
-- Togliere animazione menu
-- Icona tipo azione per stanze
+- Sovrascrivere menu a tendina
+- Fixare centramento stanza all'avvio
 - Info con icona adhoc
+- Cambiare meccanismo fadeout
 - Mostro errante linkata a info mostro
 - Regolamento
 - Linkare regolamento a menu
+- Cambiare colori tabellone
