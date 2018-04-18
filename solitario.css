@@ -271,22 +271,25 @@ input, select {
 }
 .mostroContainer {
 	width: 400px;
+	max-width: 56vw;
+	margin-left: auto;
+    margin-right: auto;
+	text-align: center;
+	font-size: 11pt;
 }
 .mostroInfo {
 	font-weight: bold;
-	margin-left: auto;
-	margin-right: auto;
 }
-#mostroNome {
+.mostroNome {
 	margin-bottom: 10px;
+	font-size: 12pt;
 }
 .mostroImg {
-	float: left;
 	width: 90px;
 	height: auto;
-	/* margin-right: 10px; */
-	margin-left: auto;
-	margin-right: auto;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 .mostroErrante {
 	height: 30px;

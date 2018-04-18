@@ -682,7 +682,15 @@ function mostraInfoMostro (mostroTipo){
 	document.getElementById("mostroCom").innerHTML = info.comportamento;
 	const contenuto = document.getElementById("mostroInfoArea").innerHTML;
 	popuppa (contenuto);
-	var contenuti = document.getElementById("risultato").childNodes;
+	var figli = document.getElementById("risultato").childNodes;
+	var divContainer = figli[1];
+	for (var i = 0; i < figli.length; i++) {
+		if (figli[i].className && figli[i].className == "mostroContainer"){
+			divContainer = figli[i];
+			break;
+		}
+	}
+	var contenuti = divContainer.childNodes;
 	for (i = 0; i < contenuti.length; i++) {
 		if (contenuti[i].id){
 			contenuti[i].removeAttribute("id");

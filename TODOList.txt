@@ -1,4 +1,3 @@
-- Carte mostro
 - Tasto home
 - Sovrascrivere menu a tendina
 - Fixare centramento stanza all'avvio
