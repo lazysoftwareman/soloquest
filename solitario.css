@@ -269,8 +269,13 @@ input, select {
 .info {
 	font-size: 8pt;
 }
+.mostroContainer {
+	width: 400px;
+}
 .mostroInfo {
 	font-weight: bold;
+	margin-left: auto;
+	margin-right: auto;
 }
 #mostroNome {
 	margin-bottom: 10px;
@@ -279,7 +284,9 @@ input, select {
 	float: left;
 	width: 90px;
 	height: auto;
-	margin-right: 10px;
+	/* margin-right: 10px; */
+	margin-left: auto;
+	margin-right: auto;
 }
 .mostroErrante {
 	height: 30px;
