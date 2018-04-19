@@ -25,6 +25,10 @@ function mostraTesto(){
 function gioca() {
 	changePage("solo.html#"+avventura);
 }
+
+function home() {
+	changePage("index.html");
+}
 	
 window.onload = getAvventura;
 	
@@ -35,6 +39,7 @@ window.onload = getAvventura;
 	<div class="testoContent">
 		<div id="risultato">&nbsp;</div>
 		<br/>
+		<input type="button" class="buttonBack" value="< Home" onclick="home();"/>&nbsp;&nbsp;
 		<input type="button" class="button" value="Gioca" onclick="gioca();"/>
 	</div>
 </div>

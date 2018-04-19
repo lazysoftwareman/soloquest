@@ -78,6 +78,10 @@
 		}
 	}
 	
+	function goHome() {
+		changePage("index.html");
+	}
+	
 	window.onload = cominciaAvventura;
 </script>
 </head>
@@ -88,6 +92,7 @@
 	<!-- <input type="button" value="Griglia" onclick="mostraCelle();"/> -->
 	<!-- <input type="button" value="Testa" onclick="testaRiordina();"/> -->
 	<div class="titoloAvventura">	
+		<span class="h1"><input type="button" class="buttonBack" value="<" onclick="goHome();"/></span>
 		<span class="h1" id="titoloAvventura"></span>
 		<span class="h1"><input type="button" value="I" onclick="mostraInfoAvventura();"/></span>
 	</div>

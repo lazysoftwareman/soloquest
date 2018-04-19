@@ -1,9 +1,9 @@
-- Tasto home
-- Sovrascrivere menu a tendina
 - Fixare centramento stanza all'avvio
+- Sovrascrivere menu a tendina
 - Info con icona adhoc
 - Cambiare meccanismo fadeout
 - Mostro errante linkata a info mostro
 - Regolamento
 - Linkare regolamento a menu
 - Cambiare colori tabellone
+- Sistemare stile tasto home
