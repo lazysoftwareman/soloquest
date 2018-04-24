@@ -10,6 +10,54 @@
 <script type="text/javascript" src="solitario.js" charset="UTF-8"></script>
 <script type="text/javascript" src="mostri.js" charset="UTF-8"></script>
 <script type="text/javascript">
+	var propH = [];
+	propH['c'] = 0.5;
+	propH['no1'] = 0;
+	propH['no2'] = 0;
+	propH['no3'] = 0;
+	propH['no4'] = 0.3;
+	propH['no5'] = 0.3;
+	propH['ne1'] = 0;
+	propH['ne2'] = 0;
+	propH['ne3'] = 0;
+	propH['ne4'] = 0.3;
+	propH['ne5'] = 0.3;
+	propH['se1'] = 0.8;
+	propH['se2'] = 0.8;
+	propH['se3'] = 0.8;
+	propH['se4'] = 1;
+	propH['se5'] = 1;
+	propH['so1'] = 0.8;
+	propH['so2'] = 0.8;
+	propH['so3'] = 0.8;
+	propH['so4'] = 1;
+	propH['so5'] = 1;
+	propH['so6'] = 1;
+
+	var propW = [];
+	propW['c'] = 0.5;
+	propW['no1'] = 0;
+	propW['no2'] = 0.25;
+	propW['no3'] = 0.4;
+	propW['no4'] = 0.25;
+	propW['no5'] = 0;
+	propW['ne1'] = 0.6;
+	propW['ne2'] = 0.75;
+	propW['ne3'] = 1;
+	propW['ne4'] = 1;
+	propW['ne5'] = 0.75;
+	propW['se1'] = 0.75;
+	propW['se2'] = 1;
+	propW['se3'] = 1;
+	propW['se4'] = 0.75;
+	propW['se5'] = 0.6;
+	propW['so1'] = 0;
+	propW['so2'] = 0.25;
+	propW['so3'] = 0.3;
+	propW['so4'] = 0.4;
+	propW['so5'] = 0.25;
+	propW['so6'] = 0;
+	
 	getJsonAvventure();
 	
 	function cominciaAvventura(){
@@ -27,14 +75,9 @@
 	function scrollToStart(){
 		var stanzaStart = dati.start.stanza;
 		var container = document.getElementById("tabelloneContainer");
-		if (stanzaStart && stanzaStart.startsWith("s")){
-			container.scrollTop = container.scrollHeight;
-		} else if (stanzaStart && stanzaStart.startsWith("c")){
-			container.scrollTop = container.scrollHeight/2;
-			container.scrollLeft = container.scrollWidth/2;
-		}
-		if (stanzaStart && stanzaStart.substring(1, 1) =="e"){
-			container.scrollLeft = container.scrollWidth;
+		if (stanzaStart){
+			container.scrollTop = (container.scrollHeight - container.offsetHeight)*propH[stanzaStart];
+			container.scrollLeft = (container.scrollWidth - container.offsetWidth)*propW[stanzaStart];
 		}		
 	}
 	
