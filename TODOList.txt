@@ -1,4 +1,3 @@
-- Fixare centramento stanza all'avvio
 - Sovrascrivere menu a tendina
 - Info con icona adhoc
 - Cambiare meccanismo fadeout
