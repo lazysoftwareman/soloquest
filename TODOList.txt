@@ -1,8 +1,9 @@
+- Introdurre parametro incantesimi caos
+- Gestire incantesimi caos nei mostri
 - Sovrascrivere menu a tendina
 - Info con icona adhoc
 - Cambiare meccanismo fadeout
 - Mostro errante linkata a info mostro
 - Regolamento
 - Linkare regolamento a menu
-- Cambiare colori tabellone
 - Sistemare stile tasto home

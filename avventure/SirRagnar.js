@@ -8,8 +8,8 @@ var datiSirRagnar = {
 	"start": {
 		"stanza": "c",
 		"scale": {
-			"posizione": "E",
-			"caselle": {"da": "h11", "a": "i12"}
+			"posizione": "O",
+			"caselle": {"da": "h15", "a": "i16"}
 			}
 	},
 	"mobili" : [

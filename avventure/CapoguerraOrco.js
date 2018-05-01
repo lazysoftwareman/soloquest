@@ -9,8 +9,8 @@ var datiCapoguerraOrco = {
 	"start": {
 		"stanza": "no3",
 		"scale": {
-			"posizione": "E",
-			"caselle": {"da": "b10", "a": "c11"}
+			"posizione": "O",
+			"caselle": {"da": "b11", "a": "c12"}
 			}
 	},
 	"mobili" : [

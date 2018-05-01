@@ -607,6 +607,7 @@ function visualizzaVisibilita (visibilita) {
 	const cella = document.getElementById(casella);
 	cella.title = "Clicca per mostrare cosa vede l'eroe";
 	cella.style.cursor = "pointer";
+	cella.style.backgroundColor = "rgba(238, 184, 0, 0.5)";
 	cella.onclick = function(){
 		apriVisibilita(visibilita);
 	};

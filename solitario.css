@@ -211,6 +211,7 @@ input, select {
 	margin-left: auto;
 	margin-right: auto;
 	background-image: url(pergamenaBW.jpg);
+	background-size: 40% 50%;
 }
 
 .tabellone .borderSu {
@@ -229,7 +230,7 @@ input, select {
 	border: 1px solid black;
 	height: 30px;
 	width: 30px;
-	background-color: #666;
+	background-color: #333;
 	padding: 0;
 	text-align: center;
     vertical-align: middle;
