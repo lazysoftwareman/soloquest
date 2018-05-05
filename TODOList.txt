@@ -1,3 +1,7 @@
+- Porta su bordo
+- Meccanismo porta a chiave
+- Meccanismo teletrasporto
+- Evento all'uccisione di un mostro
 - Introdurre parametro incantesimi caos
 - Gestire incantesimi caos nei mostri
 - Sovrascrivere menu a tendina
