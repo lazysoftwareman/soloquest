@@ -98,7 +98,8 @@ var datiTemplate = {
 		"vis1": "so4",//indica una delle due zone visibili all'apertura della porta. Può essere una stanza o una sequenza di caselle, obbligatorio
 		"vis2": {"da": "m10", "a": "m17"},//indica una delle due zone visibili all'apertura della porta. Può essere una stanza o una sequenza di caselle, obbligatorio
 		"testo": "L'apertura della cella ha fatto scattare un allarme",//indica il testo da mostrare all'apertura della porta. Non obbligatorio
-		"azione": "rendiVisibileTutto();"// indica l'azione da eseguire all'apertura della porta. Non obbligatorio
+		"azione": "rendiVisibileTutto();",// indica l'azione da eseguire all'apertura della porta. Non obbligatorio
+		"blocco": {"testo":"Avete la chiave?"}// indica il testo del blocco alla porta. Non obbligatorio
 	},
 	{
 		"caselle": {"da": "p9", "a": "p10"},

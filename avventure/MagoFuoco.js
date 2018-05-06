@@ -49,6 +49,12 @@ var datiMagoFuoco = {
 		"azione": "rendiVisibileTutto();"// indica l'azione da eseguire all'apertura della porta. Non obbligatorio
 	},
 	{
+		"caselle": {"da": "g25", "a": "g26"},
+		"vis1": "ne4",
+		"vis2": {"da": "a26", "a": "h26"},
+		"blocco": {"testo":"Per aprire questa porta dovete aver trovato la chiave di Pelgor. Ce l'avete?"}
+	},
+	{
 		"caselle": {"da": "j0", "a": "j1"},
 		"vis1": {"da": "b1", "a": "s1"},
 		"vis2": {"da": "b1", "a": "s1"}

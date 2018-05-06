@@ -37,6 +37,16 @@ function trovaAzione(evento, tipo){
 }
 
 function apriPorta(porta, automatico){
+	if (automatico || !porta.blocco){
+		apriEffettivamentePorta(porta, automatico);
+	} else {
+		if (confirm(porta.blocco.testo)){
+			apriEffettivamentePorta(porta, automatico);
+		}
+	}
+}
+
+function apriEffettivamentePorta(porta, automatico){
 	var casPorta = getCaselle(porta.caselle.da, porta.caselle.a);
 	if (porta.vis1.da){
 		rendiVisibileSpread (casPorta, porta.vis1.da, porta.vis1.a);
