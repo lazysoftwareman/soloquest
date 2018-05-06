@@ -49,6 +49,11 @@ var datiMagoFuoco = {
 		"azione": "rendiVisibileTutto();"// indica l'azione da eseguire all'apertura della porta. Non obbligatorio
 	},
 	{
+		"caselle": {"da": "j0", "a": "j1"},
+		"vis1": {"da": "b1", "a": "s1"},
+		"vis2": {"da": "b1", "a": "s1"}
+	},
+	{
 		"caselle": {"da": "p9", "a": "p10"},
 		"vis1": "so4",
 		"vis2": "so5"

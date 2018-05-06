@@ -1,5 +1,3 @@
-- Sistemare js
-- Porta su bordo
 - Meccanismo porta a chiave
 - Meccanismo teletrasporto
 - Evento all'uccisione di un mostro

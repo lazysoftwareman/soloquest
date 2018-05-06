@@ -255,11 +255,17 @@ function visualizzaPorta (porta) {
 	var cas1 = porta.caselle.da;
 	var cas2 = porta.caselle.a;
 	var orizzontale = !isOrizzontale(cas1, cas2);
-	const offsetPorta = dCel/2;
+	var offsetPorta = dCel/2;
 	const width = dCel;
 	const height = dCel;
 	const src = orizzontale? "portaO" : "portaV";
-	img = posizionaImmagine(src, width, height, document.getElementById(cas1));
+	var casella = document.getElementById(cas1);
+	if (casella){
+	} else {
+		casella = document.getElementById(cas2);
+		offsetPorta = -dCel/2;
+	}
+	var img = posizionaImmagine(src, width, height, casella);
 	img.title = "Apri la porta";
 	img.style.cursor = "pointer";
 	if (orizzontale){
