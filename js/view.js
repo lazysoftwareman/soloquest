@@ -1,196 +1,4 @@
-
-//orizz: 26; vert: 19;
-//Da a1 a s26
-
-var dCel = 30;
-var dB1 = 1;
-var dB2 = 3;
-
-const avventure = [];
-avventure.push ("LaProva");
-avventure.push ("SirRagnar");
-avventure.push ("CapoguerraOrco");
-
-const stanze = [];
-stanze['c'] = getCaselle('h11', 'l16');
-stanze['no1'] = getCaselle('b2', 'd5');
-stanze['no2'] = getCaselle('b6', 'd9');
-stanze['no3'] = getCaselle('b10', 'f12');
-stanze['no4'] = getCaselle('e6', 'i9');
-stanze['no5'] = getCaselle('e2', 'i5');
-stanze['ne1'] = getCaselle('b15', 'f17');
-stanze['ne2'] = getCaselle('b18', 'e21');
-stanze['ne3'] = getCaselle('b22', 'e25');
-stanze['ne4'] = getCaselle('f22', 'i25');
-stanze['ne5'] = getCaselle('f18', 'i21');
-stanze['se1'] = getCaselle('k18', 'm21');
-stanze['se1'].push('n19');
-stanze['se1'].push('n20');
-stanze['se1'].push('n21');
-stanze['se2'] = getCaselle('k22', 'n25');
-stanze['se3'] = getCaselle('o22', 'r25');
-stanze['se4'] = getCaselle('o19', 'r21');
-stanze['se5'] = getCaselle('n15', 'r18');
-stanze['so1'] = getCaselle('k2', 'n5');
-stanze['so2'] = getCaselle('k6', 'm7');
-stanze['so3'] = getCaselle('k8', 'm9');
-stanze['so4'] = getCaselle('n10', 'r12');
-stanze['so5'] = getCaselle('n6', 'r9');
-stanze['so6'] = getCaselle('o2', 'r5');
-
-var colori = [];
-colori['corridoio'] = "rgba(255,255,255,0.3)";
-colori['c'] = "rgba(69,54,47,0.3)";
-colori['no1'] = "rgba(97,67,43,0.3)";
-colori['no2'] = "rgba(125,58,50,0.3)";
-colori['no3'] = "rgba(81,107,96,0.3)";
-colori['no4'] = "rgba(122,125,67,0.3)";
-colori['no5'] = "rgba(74,74,73,0.3)";
-colori['ne1'] = "rgba(123,64,49,0.3)";
-colori['ne2'] = "rgba(146,144,154,0.3)";
-colori['ne3'] = "rgba(144,106,59,0.3)";
-colori['ne4'] = "rgba(140,129,68,0.3)";
-colori['ne5'] = "rgba(129,93,41,0.3)";
-colori['se1'] = "rgba(124,124,127,0.3)";
-colori['se2'] = "rgba(147,123,55,0.3)";
-colori['se3'] = "rgba(96,117,60,0.3)";
-colori['se4'] = "rgba(137,101,64,0.3)";
-colori['se5'] = "rgba(120,85,74,0.3)";
-colori['so1'] = "rgba(146,126,66,0.3)";
-colori['so2'] = "rgba(100,123,122,0.3)";
-colori['so3'] = "rgba(100,123,122,0.3)";
-colori['so4'] = "rgba(136,111,59,0.3)";
-colori['so5'] = "rgba(126,68,48,0.3)";
-colori['so6'] = "rgba(100,104,109,0.3)";
-
-const caselleViste = [];
-const stanzeViste = [];
-
-var labelStandard = [];
-labelStandard['Ricerca'] = "Ricerca tesoro";
-labelStandard['RicercaPS'] = "Ricerca porte segrete";
-labelStandard['Info'] = "Informazioni";
-
-var testiStandard = [];
-testiStandard['Ricerca'] = "Pesca una carta tesoro";
-testiStandard['RicercaPS'] = "Nessuna porta segreta nella stanza";
-testiStandard['Info'] = "Niente attira particolarmente la vostra attenzione";
-
-function getJsonAvventure() {
-	for (var i=0; i<avventure.length; i++){
-		if (avventure[i] != "Template"){
-			var imported = document.createElement('script');
-			imported.src = "avventure/"+avventure[i]+".js";
-			document.head.appendChild(imported);
-		}
-	}
-}
-
-function getDatiAvventura() {
-    var vars = [], hash;
-    avventura = window.location.href.slice(window.location.href.indexOf('#') + 1);
-	dati = eval ("dati" + avventura);
-}
-
-function popuppa(risultato){
-	mostraOverlay();
-	const popup = document.getElementById('risultato');
-	popup.style.display = "none";
-	popup.style.position = "absolute";	
-	popup.innerHTML = "";
-    popup.style.top = "30vh";
-    popup.style.left = "15vw";
-	//popup.style.display = "block";
-	popup.style.zIndex = 30;
-	fadeInPopup(popup, risultato);
-}
-
-function stampArray(array){
-	var stringa = "";
-	for (var j=0; j<array.length; j++){
-		stringa = stringa + array[j] + " ";
-	}
-	return stringa;
-}
-
-// Close the dropdown if the user clicks outside of it
- /*window.onclick = function(event) {
-	if (!event.target.matches('.popupMenu')) {
-		const menu = document.getElementById("popupMenu");
-		if (menu && menu.style.display == "block"){
-			menu.style.display = "none";
-		}
-	}
-	if (!event.target.matches('.risultato')) {
-		const popup = document.getElementById("risultato");
-		if (popup && popup.style.display == "block"){
-			popup.style.display = "none";
-		}
-	}
-}*/
-// window.addEventListener("click", chiudiPoppuppi);
-// window.addEventListener("touchend", chiudiPoppuppi);
-
-function chiudiPoppuppi() {
-	nascondiOverlay();
-	chiudiBottoni();
-	const popup = document.getElementById("risultato");
-	fadeOutPopup(popup);
-}
-
-function chiudiBottoni() {
-	const menu = document.getElementById("popupMenu");
-	if (menu && menu.style.display == "block"){
-		menu.style.display = "none";
-	}
-	fadeOutBottoni(menu);
-}
-
-function mostraOverlay () {
-	var overlay = document.getElementById("overlay");
-	if (overlay.style.display == "none"){
-		overlay.style.display = "inline";
-	}
-}
-
-function nascondiOverlay () {
-	var overlay = document.getElementById("overlay");
-	overlay.style.display = "none";
-}
-
-function getLettera(casella){
-	return casella.substring(0, 1);
-}
-
-function getNumero(casella){
-	return casella.substring(1, casella.length);
-}
-
-function getNumeroNumero(casella) {
-	return parseInt(getNumero(casella));
-}
-
-function getCaselle(da, a) {
-	var result = [];
-	for (var j=getLettera(da).charCodeAt(0); j<=getLettera(a).charCodeAt(0); j++){
-		for (var i=getNumeroNumero(da); i<=getNumeroNumero(a); i++){
-			result.push("" + String.fromCharCode(j) + i);
-		}
-	}
-	return result;
-}
-
-function getNumeroCaselleOrizzontali(da, a){	
-	var n1 = getNumero(da);
-	var n2 = getNumero(a);
-	return n2-n1+1;
-}
-
-function getNumeroCaselleVerticali(da, a){	
-	var n1 = getLettera(da).charCodeAt(0)
-	var n2 = getLettera(a).charCodeAt(0)
-	return n2-n1+1;
-}
+//GESTIONE VISIBILITA
 
 function rendiVisibileStart(){
 	if (dati.start.caselle){
@@ -434,6 +242,15 @@ function trovaEventoInStanza(stanza){
 	}
 }
 
+function trovaPortaSegretaInCasella (casella){
+	var porte = dati.porteSegrete;
+	for (var i=0; i<porte.length; i++){
+		if (casella == porte[i].caselle.da || casella == porte[i].caselle.a) {
+			return porte[i];
+		}
+	}
+}
+
 function visualizzaPorta (porta) {
 	var cas1 = porta.caselle.da;
 	var cas2 = porta.caselle.a;
@@ -455,58 +272,6 @@ function visualizzaPorta (porta) {
 	};
 }
 
-function apriPorta(porta, automatico){
-	var casPorta = getCaselle(porta.caselle.da, porta.caselle.a);
-	if (porta.vis1.da){
-		rendiVisibileSpread (casPorta, porta.vis1.da, porta.vis1.a);
-	} else {
-		rendiVisibileSpread (casPorta, porta.vis1);
-	}
-	if (porta.vis2.da){
-		rendiVisibileSpread (casPorta, porta.vis2.da, porta.vis2.a);
-	} else {
-		rendiVisibileSpread (casPorta, porta.vis2);
-	}
-	if (!automatico){
-		if (porta.testo){
-			popuppa(porta.testo);
-		}
-		if (porta.azione){
-			eval(porta.azione);
-		}
-	}
-}
-
-function apriVisibilita(visib, automatico){
-	if (visib.vis1.da){
-		rendiVisibileSpread (visib.casella, visib.vis1.da, visib.vis1.a);
-	} else {
-		rendiVisibileSpread (visib.casella, visib.vis1);
-	}
-	if (visib.vis2.da){
-		rendiVisibileSpread (visib.casella, visib.vis2.da, visib.vis2.a);
-	} else {
-		rendiVisibileSpread (visib.casella, visib.vis2);
-	}
-	if (!automatico){
-		if (visib.testo){
-			popuppa(visib.testo);
-		}
-		if (visib.azione){
-			eval(visib.azione);
-		}
-	}
-}
-
-function trovaPortaSegretaInCasella (casella){
-	var porte = dati.porteSegrete;
-	for (var i=0; i<porte.length; i++){
-		if (casella == porte[i].caselle.da || casella == porte[i].caselle.a) {
-			return porte[i];
-		}
-	}
-}
-
 function visualizzaPortaSegreta (porta) {
 	var cas1 = porta.caselle.da;
 	var cas2 = porta.caselle.a;
@@ -522,10 +287,6 @@ function visualizzaPortaSegreta (porta) {
 	img.onclick = function(){
 		apriPorta(porta);
 	};
-}
-
-function isOrizzontale(da, a) {
-	return getLettera(da) == getLettera(a);
 }
 
 function visualizzaMobile (mobile) {
@@ -639,66 +400,6 @@ function visualizzaAzioniStanza (casella, evento){
 	};
 }
 
-function mostraMenuStanza(evento, x, y){
-	var azioneInfo = trovaAzione(evento, "Info");
-	var azioneRicerca = trovaAzione(evento, "Ricerca");
-	var azioneRicercaPS = trovaAzione(evento, "RicercaPS");
-	var elemento = {
-		"azioni": [azioneInfo,azioneRicerca,azioneRicercaPS]
-	}
-	mostraBottoni (elemento, x, y);
-}
-
-function mostraMenuMostro (mostro, id, x, y){
-	var azioneRimuovi = {
-		"tipo": "RimuoviMostro",
-		"label": "Mostro ucciso",
-		"azione": "rimuoviMostro(\"" + id + "\")"
-	};
-	var azioneInfo = {
-		"tipo": "Info",
-		"label": "Informazioni",
-		"azione": "mostraInfoMostro(\"" + mostro.tipo + "\")"
-	};
-	var elemento = {
-		"azioni": [azioneRimuovi,azioneInfo]
-	}
-	mostraBottoni (elemento, x, y);
-}
-
-function rimuoviMostro (id){
-	var mostroImg = document.getElementById(id);
-	mostroImg.parentNode.removeChild(mostroImg);
-}
-
-function mostraInfoMostro (mostroTipo){
-	const info = mostri[mostroTipo];
-	document.getElementById("mostroImg").src = "img/mostri/" + info.tipo + ".png";
-	document.getElementById("mostroNome").innerHTML = info.nome;
-	document.getElementById("mostroMov").innerHTML = info.movimento;
-	document.getElementById("mostroAtt").innerHTML = info.attacco;
-	document.getElementById("mostroDif").innerHTML = info.difesa;
-	document.getElementById("mostroCor").innerHTML = info.corpo;
-	document.getElementById("mostroMen").innerHTML = info.mente;
-	document.getElementById("mostroCom").innerHTML = info.comportamento;
-	const contenuto = document.getElementById("mostroInfoArea").innerHTML;
-	popuppa (contenuto);
-	var figli = document.getElementById("risultato").childNodes;
-	var divContainer = figli[1];
-	for (var i = 0; i < figli.length; i++) {
-		if (figli[i].className && figli[i].className == "mostroContainer"){
-			divContainer = figli[i];
-			break;
-		}
-	}
-	var contenuti = divContainer.childNodes;
-	for (i = 0; i < contenuti.length; i++) {
-		if (contenuti[i].id){
-			contenuti[i].removeAttribute("id");
-		}
-	}
-}
-
 function posizionaImmagine(fileName, width, height, td){
 	var immagine = document.createElement("img");
 	immagine.src = "img/" + fileName + ".png";
@@ -714,82 +415,6 @@ function posizionaImmagine(fileName, width, height, td){
 	return immagine;
 }
 
-function trovaAzione(evento, tipo){
-	var azione = {
-		"tipo": tipo,
-		"label": labelStandard[tipo],
-		"testo": testiStandard[tipo]
-	};
-	if (evento){
-		const azioni = evento.azioni;
-		for (var i=0; i<azioni.length; i++){
-			var currAzione = azioni[i];
-			if (currAzione.tipo == tipo){
-				if (currAzione.label){
-					azione.label = currAzione.label;
-				}
-				if (currAzione.testo){
-					azione.testo = currAzione.testo;
-				}
-				if (currAzione.azione){
-					azione.azione = currAzione.azione;
-				}
-				break;
-			}
-		}
-	}
-	return azione;
-}
 
-function mostraBottoni(elemento, x, y) {
-	mostraOverlay();
-	const bottoni = elemento.azioni;
-	const menu = document.getElementById("popupMenu");
-	menu.style.top = 0+"px";
-    menu.style.left = 0+"px";
-	menu.innerHTML = "";
-	for (var i=0; i<bottoni.length; i++){
-		const bottone = bottoni[i];
-		var span = document.createElement("span");
-		span.onclick = function(){		
-			nascondiOverlay();
-			esegui(bottone);
-			chiudiBottoni();
-		}
-		span.innerHTML = bottone.label;
-		menu.appendChild (span);
-	}	
-	menu.style.display = "block";
-    posizionaMenu(menu, x, y);
-	menu.style.zIndex = 20;
-	menu.style.position = "absolute";
-	//fadeInBottoni(menu);
-}
-
-function posizionaMenu(menu, x, y){
-	const wTot = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-	const hTot = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	//alert ("wTot " +wTot + ",hTot " + hTot);
-	const menuW = menu.offsetWidth;
-	const menuH = menu.offsetHeight;
-	//alert ("menuW " +menuW + ",menuH " + menuH);
-	const leftMax = wTot - menuW;
-	const topMax = hTot - menuH;
-	//alert ("leftMax " +leftMax + ",topMax " + topMax);
-	const lefft = Math.min(x+window.scrollX, leftMax);
-	const topp = Math.min(y+window.scrollY, topMax);
-	//alert ("lefft " +lefft + ",topp " + topp);
-	menu.style.top = topp+"px";
-    menu.style.left = lefft+"px";
-}
-
-function esegui(bottone){
-	if (bottone.testo){
-		popuppa(bottone.testo);
-	}
-	if (bottone.azione) {
-		eval (bottone.azione);
-	}
-}
 
 
