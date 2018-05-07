@@ -46,6 +46,26 @@ function apriPorta(porta, automatico){
 	}
 }
 
+function apriConfirm(porta){
+	const contenuto = document.getElementById("confirmDialog").innerHTML;
+	popuppa (contenuto);
+	var figli = document.getElementById("confirmDialog").childNodes;
+	//TODO GESTIRE RIMOZIONE ID E METTERCI TESTO E FUNCTION
+	var divContainer = figli[1];
+	for (var i = 0; i < figli.length; i++) {
+		if (figli[i].className && figli[i].className == "mostroContainer"){
+			divContainer = figli[i];
+			break;
+		}
+	}
+	var contenuti = divContainer.childNodes;
+	for (i = 0; i < contenuti.length; i++) {
+		if (contenuti[i].id){
+			contenuti[i].removeAttribute("id");
+		}
+	}
+}
+
 function apriEffettivamentePorta(porta, automatico){
 	var casPorta = getCaselle(porta.caselle.da, porta.caselle.a);
 	if (porta.vis1.da){
