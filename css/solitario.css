@@ -44,7 +44,7 @@ body {
 	position:relative;
 	top:1px;
 }
-.button {
+.buttonBack {
 	-moz-box-shadow:inset 0px 1px 0px 0px #cf866c;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #cf866c;
 	box-shadow:inset 0px 1px 0px 0px #cf866c;
@@ -59,7 +59,7 @@ body {
 	border:1px solid #942911;
 	text-shadow:0px 1px 0px #854629;
 }
-.button:hover {
+.buttonBack:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #bc3315), color-stop(1, #d0451b));
 	background:-moz-linear-gradient(top, #bc3315 5%, #d0451b 100%);
 	background:-webkit-linear-gradient(top, #bc3315 5%, #d0451b 100%);
@@ -69,7 +69,7 @@ body {
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b',GradientType=0);
 	background-color:#bc3315;
 }
-.buttonBack {
+.button {
 	-moz-box-shadow:inset 0px 1px 0px 0px #84CF6C;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #84CF6C;
 	box-shadow:inset 0px 1px 0px 0px #84CF6C;
@@ -84,7 +84,7 @@ body {
 	border:1px solid #3A9411;
 	text-shadow:0px 1px 0px #3A8529;
 }
-.buttonBack:hover {
+.button:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #4BBC15), color-stop(1, #4BD01B));
 	background:-moz-linear-gradient(top, #4BBC15 5%, #4BD01B 100%);
 	background:-webkit-linear-gradient(top, #4BBC15 5%, #4BD01B 100%);

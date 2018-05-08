@@ -37,30 +37,28 @@ function trovaAzione(evento, tipo){
 }
 
 function apriPorta(porta, automatico){
-	if (automatico || !porta.blocco){
-		apriEffettivamentePorta(porta, automatico);
-	} else {
-		if (confirm(porta.blocco.testo)){
+	if (caselleViste.indexOf(porta.caselle.da) < 0 || caselleViste.indexOf(porta.caselle.a) < 0) {
+		if (automatico || !porta.blocco){
 			apriEffettivamentePorta(porta, automatico);
+		} else {
+			apriConfirm(porta);
 		}
 	}
 }
 
 function apriConfirm(porta){
+	document.getElementById("confirmTesto").innerHTML = porta.blocco.testo;
 	const contenuto = document.getElementById("confirmDialog").innerHTML;
 	popuppa (contenuto);
-	var figli = document.getElementById("confirmDialog").childNodes;
-	//TODO GESTIRE RIMOZIONE ID E METTERCI TESTO E FUNCTION
-	var divContainer = figli[1];
-	for (var i = 0; i < figli.length; i++) {
-		if (figli[i].className && figli[i].className == "mostroContainer"){
-			divContainer = figli[i];
-			break;
-		}
-	}
-	var contenuti = divContainer.childNodes;
+	var contenuti = document.getElementById("risultato").childNodes;
 	for (i = 0; i < contenuti.length; i++) {
 		if (contenuti[i].id){
+			if (contenuti[i].id == "confirmSiButton"){
+				contenuti[i].onclick = function() {
+					apriEffettivamentePorta(porta, false);
+					chiudiPoppuppi();
+				}
+			}
 			contenuti[i].removeAttribute("id");
 		}
 	}
