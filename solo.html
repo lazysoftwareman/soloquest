@@ -102,7 +102,7 @@
 	
 	function mostraInfoAvventura() {
 		var testo = dati.testo;
-		var merrante = "<img src='img/" + dati.mostroErrante + ".png' class='mostroErrante'/>";
+		var merrante = "<img src='img/" + dati.mostroErrante + ".png' class='mostroErrante' onclick='mostraInfoMostro (\""+mostri[dati.mostroErrante].tipo+"\");'/>";
 		merrante += "&nbsp;Mostro errante: " + mostri[dati.mostroErrante].nome;
 		testo += "<br><br>" + merrante;
 		popuppa (testo);
