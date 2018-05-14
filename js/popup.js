@@ -25,6 +25,15 @@ function mostraBottoni(elemento, x, y) {
 	//fadeInBottoni(menu);
 }
 
+function esegui(bottone){
+	if (bottone.testo){
+		popuppa(bottone.testo);
+	}
+	if (bottone.azione) {
+		eval (bottone.azione);
+	}
+}
+
 function posizionaMenu(menu, x, y){
 	const wTot = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	const hTot = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);

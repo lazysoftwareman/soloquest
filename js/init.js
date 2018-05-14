@@ -8,10 +8,10 @@ var dB1 = 1;
 var dB2 = 3;
 
 const avventure = [];
-avventure.push ("LaProva");
+avventure.push ("LibroProfezie");
+//avventure.push ("LaProva");
 avventure.push ("SirRagnar");
 avventure.push ("CapoguerraOrco");
-avventure.push ("MagoFuoco");
 
 const stanze = [];
 stanze['c'] = getCaselle('h11', 'l16');

@@ -1,14 +1,5 @@
 //EVENTI VARI
 
-function esegui(bottone){
-	if (bottone.testo){
-		popuppa(bottone.testo);
-	}
-	if (bottone.azione) {
-		eval (bottone.azione);
-	}
-}
-
 function trovaAzione(evento, tipo){
 	var azione = {
 		"tipo": tipo,
@@ -136,6 +127,10 @@ function mostraMenuMostro (mostro, id, x, y){
 
 function rimuoviMostro (id){
 	var mostroImg = document.getElementById(id);
+	const mostro = trovaMostroInCasella(id.substring("mostro".length));
+	if (mostro.testoUcciso) {
+		popuppa(mostro.testoUcciso);
+	}
 	mostroImg.parentNode.removeChild(mostroImg);
 }
 

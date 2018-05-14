@@ -173,7 +173,15 @@ var datiTemplate = {
 	],
 	"mostri" : [// indica l'elenco dei mostri. Obbligatorio ma può essere vuoto
 	{
-		"tipo": "fimir", //il tipo indica anche il file per l'immagine, e le caratteristiche
+		"tipo": "fimir", //il tipo indica anche il file per l'immagine, e le caratteristiche. "png" se personaggio non giocante
+		"nome" : "Sir Ragnar", // il nome da visualizzare nelle caratteristiche, non obbligatorio
+		"movimento" : "1d", // il movimento da visualizzare nelle caratteristiche, non obbligatorio
+		"attacco" : 0, // l'attacco da visualizzare nelle caratteristiche, non obbligatorio
+		"difesa" : 2, // la difesa da visualizzare nelle caratteristiche, non obbligatorio
+		"corpo" : 2, // i punti corpo da visualizzare nelle caratteristiche, non obbligatorio
+		"mente" : 3, // i punti mente da visualizzare nelle caratteristiche, non obbligatorio
+		"comportamento" : "Si muove subito dopo l'eroe che l'ha scoperto", // il comportamento da visualizzare nelle caratteristiche, non obbligatorio
+		"testoUcciso": "Recuperate la chiaver di Faoper",//indica il testo da mostrare all'uccisione del mostro. Non obbligatorio
 		"caselle": ["q11"] //l'elenco delle caselle in cui si trova il mostro. obbligatorio
 	},
 	{
