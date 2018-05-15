@@ -101,11 +101,38 @@ function apriVisibilita(visib, automatico){
 function mostraMenuStanza(evento, x, y){
 	var azioneInfo = trovaAzione(evento, "Info");
 	var azioneRicerca = trovaAzione(evento, "Ricerca");
-	var azioneRicercaPS = trovaAzione(evento, "RicercaPS");
+	var azioneRicercaPS = getAzionePS(evento);
 	var elemento = {
 		"azioni": [azioneInfo,azioneRicerca,azioneRicercaPS]
 	}
 	mostraBottoni (elemento, x, y);
+}
+
+function getAzionePS(evento){
+	var azione = {
+		"label": labelStandard['RicercaPS'],
+		"azione": "ricercaPS(\""+evento.stanza+"\")"
+	};
+	return azione;
+}
+
+function ricercaPS(stanza){
+	var casPorte = trovaCasellePorteSegrete();
+	var caselle = stanze[stanza];
+	var trovata = false;
+	for (var i=0; i<caselle.length; i++){
+		var casella = caselle[i];
+		if (casPorte.indexOf(casella) >= 0){
+			visualizzaPortaSegreta (trovaPortaSegretaInCasella(casella));
+			trovata = true;
+		}
+	}
+	if (trovata){
+		popuppa(testiStandard['RicercaPSOK']);
+	} else {
+		popuppa(testiStandard['RicercaPS']);
+	}
+	
 }
 
 function mostraMenuMostro (mostro, id, x, y){
