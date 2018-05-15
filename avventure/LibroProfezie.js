@@ -181,17 +181,21 @@ var datiLibroProfezie = {
 	],
 	"mostri" : [// TODO
 	{
-		"tipo": "fimir", //il tipo indica anche il file per l'immagine, e le caratteristiche
+		"tipo": "fimir",
 		"testoUcciso": "Il mostro lascia cadere una chiave rossa",
-		"caselle": ["h26"] //l'elenco delle caselle in cui si trova il mostro. obbligatorio
+		"caselle": ["b22"] 
+	},
+	{
+		"tipo": "fimir",
+		"caselle": ["c17", "r24", "o3", "f6"] 
 	},
 	{
 		"tipo": "goblin",
-		"caselle": ["o11", "l3", "g4", "h7", "h8"]
+		"caselle": ["o5", "p17", "p20", "o21", "n21", "m20", "f21", "f17", "d15", "i4"]
 	},
 	{
 		"tipo": "orco",
-		"caselle": ["f5", "i15", "l12", "m3", "o8", "p9"]
+		"caselle": ["b4", "d2", "e4", "f7", "h9", "c16", "d16", "c19", "e19"]
 	},
 	{
 		"tipo": "scheletro",
