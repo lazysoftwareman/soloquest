@@ -227,16 +227,6 @@ var datiSirRagnar = {
 		]
 	},
 	{
-		"stanza": "so5",
-		"azioni": [
-		{
-			"tipo": "RicercaPS",
-			"testo": "Trovate una porta segreta",
-			"azione": "visualizzaPortaSegreta(trovaPortaSegretaInCasella (\"n9\"))"
-		}
-		]
-	},
-	{
 		"stanza": "so2",
 		"azioni": [
 		{
