@@ -67,7 +67,7 @@ function visualizzaContenuto (original, isStanza, sorgente){
 	var stanza = isStanza? trovaStanza(angolino): "corridoio";
 	visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisibilita, casEventi, stanza, caselle, 0, isStanza);
 	if (isStanza && stanzeViste.indexOf(stanza) < 0){
-		visualizzaAzioniStanza(angolino, trovaEventoInStanza(stanza));
+		visualizzaAzioniStanza(angolino, stanza);
 		stanzeViste.push(stanza);
 	}
 }
@@ -122,6 +122,16 @@ function trovaStanza(primaCasella){
 
 function trovaCasellePorte() {
 	var porte = dati.porte;
+	var casPorte = [];
+	for (var i=0; i<porte.length; i++){
+		casPorte.push(porte[i].caselle.da);
+		casPorte.push(porte[i].caselle.a);
+	}
+	return casPorte;
+}
+
+function trovaCasellePorteSegrete() {
+	var porte = dati.porteSegrete;
 	var casPorte = [];
 	for (var i=0; i<porte.length; i++){
 		casPorte.push(porte[i].caselle.da);
@@ -389,7 +399,7 @@ function visualizzaScale (scale) {
 	
 }
 
-function visualizzaAzioniStanza (casella, evento){
+function visualizzaAzioniStanza (casella, stanza){
 	const src = "menuStanza";
 	const height = dCel*0.6;
 	const width = dCel*0.6;
@@ -401,7 +411,7 @@ function visualizzaAzioniStanza (casella, evento){
 	immagine.onclick = function(event){
 		var x = event.clientX;
 		var y = event.clientY;
-		mostraMenuStanza(evento, x, y);
+		mostraMenuStanza(stanza, x, y);
 		event.stopPropagation();
 	};
 }

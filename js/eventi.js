@@ -98,20 +98,21 @@ function apriVisibilita(visib, automatico){
 	}
 }
 
-function mostraMenuStanza(evento, x, y){
+function mostraMenuStanza(stanza, x, y){
+	var evento = trovaEventoInStanza(stanza);
 	var azioneInfo = trovaAzione(evento, "Info");
 	var azioneRicerca = trovaAzione(evento, "Ricerca");
-	var azioneRicercaPS = getAzionePS(evento);
+	var azioneRicercaPS = getAzionePS(stanza);
 	var elemento = {
 		"azioni": [azioneInfo,azioneRicerca,azioneRicercaPS]
 	}
 	mostraBottoni (elemento, x, y);
 }
 
-function getAzionePS(evento){
+function getAzionePS(stanza){
 	var azione = {
 		"label": labelStandard['RicercaPS'],
-		"azione": "ricercaPS(\""+evento.stanza+"\")"
+		"azione": "ricercaPS(\""+stanza+"\")"
 	};
 	return azione;
 }
