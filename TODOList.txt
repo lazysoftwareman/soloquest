@@ -1,4 +1,3 @@
-- Ritrovamento automatico porte segrete, eccheccazzo
 - Meccanismo teletrasporto
 - Evento all'uccisione di un mostro
 - Introdurre parametro incantesimi caos
