@@ -332,21 +332,18 @@ var datiLibroProfezie = {
 		"vis2": {"da": "a21", "a": "a26"}
 	}						
 	],
-	"eventi" : [ //TODO
+	"eventi" : [
 	{
-		"lettera": "A", //se si vuole mostrare una lettera, non obbligatorio
-		"casella": "l16", //se l'evento non è in una stanza, obbligatorio uno dei due
-		"stanza": "c", //se l'evento è in una stanza, obbligatorio uno dei due
-		"azioni": [ //le azioni da mostrare nel menu a tendina
+		"stanza": "so6",
+		"azioni": [
 		{
-			"tipo": "Ricerca", //Se Ricerca, RicercaPS o Info, non serve la label, obbligatorio
-			"label": "Ricerca tesoro", //Se di tipo diverso da questi 3 standard, non obbligatorio
-			"testo": "Zumpappero", //Se si vuole mostrare un testo, non obbligatorio
-			"azione": "visualizzaMostro(dati.mostri.gargoyle,''a1')" //l'eventuale azione da eseguire, non obbligatorio
+			"tipo": "Ricerca",
+			"testo": "Il primo Eroe che cerca tesori troverà uno spadone. " +
+			"Tutti gli altri peschino una carta tesoro"
 		},
 		{
 			"tipo": "Info",
-			"azione": "La stanza è tutta vuota tranne un cesso nel centro"
+			"testo": "Le armi in questa stanza sono quasi tutte danneggiate"
 		}
 		]
 	},
@@ -355,11 +352,12 @@ var datiLibroProfezie = {
 		"azioni": [
 		{
 			"tipo": "Ricerca",
-			"testo": "Non c'è nulla che gli eroi possano volere. Pesca una carta tesoro"
+			"testo": "Il primo Eroe che cerca tesori troverà la Corazza di Borin. " +
+			"Tutti gli altri peschino una carta tesoro"
 		},
 		{
 			"tipo": "Info",
-			"testo": "Le armi in questa stanza sono scheggiate"
+			"testo": "Nella stanza troneggia un armadio finemente lavorato"
 		}
 		]
 	},
@@ -368,51 +366,55 @@ var datiLibroProfezie = {
 		"azioni": [
 		{
 			"tipo": "Ricerca",
-			"testo": "Questo scrigno è vuoto. Pesca una carta tesoro"
+			"testo": "Il primo Eroe che cerca tesori troverà una gemma del valore di 100 mo dentro un cassetto " +
+			"del tavolo dell'alchimista. Tutti gli altri peschino una carta tesoro"
 		},
 		{
-			"tipo": "RicercaPS",
-			"testo": "Trovate una porta segreta",
-			"azione": "visualizzaPortaSegreta(trovaPortaSegretaInCasella (\"o18\"))"
-		}
-		]
-	},
-	{
-		"stanza": "no2",
-		"azioni": [
-		{
 			"tipo": "Info",
-			"testo": "Questa mummia è la guardia della tomba di Fellmarg, " +
-			"ed era un tempo un possente guerriero. In attacco lancia 4 dadi da combattimento, anziché 3"
+			"testo": "La stanza in passato doveva essere appartenuta a un sapiente alchimista. Ormai è abbandonata da tempo"
 		}
 		]
 	},
 	{
-		"stanza": "no3",
+		"stanza": "so5",
 		"azioni": [
 		{
 			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà 84 monete d’oro nello scrigno. " +
+			"testo": "Il primo Eroe che cerca tesori troverà 100 mo dentro un vecchio scrigno malridotto. " +
 			"Tutti gli altri peschino una carta tesoro"
+		},
+		{
+			"tipo": "Info",
+			"testo": "Niente attira particolarmente la vostra attenzione, tranne un vecchio scrigno malridotto"
 		}
 		]
 	},
 	{
-		"stanza": "c",
+		"stanza": "no1",
 		"azioni": [
 		{
 			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà 120 monete d’oro nello scrigno. " +
+			"testo": "Il primo Eroe che cerca tesori troverà 150 mo nello scrigno protetto dal Gargoyle. " +
 			"Tutti gli altri peschino una carta tesoro"
+		},
+		{
+			"tipo": "Info",
+			"testo": "Uno splendido scrigno finemente lavorato si trova su un lato della stanza"
 		}
 		]
 	},
 	{
-		"stanza": "so6",
+		"stanza": "no1",
 		"azioni": [
 		{
+			"tipo": "Ricerca",
+			"testo": "Il primo Eroe che cerca tesori troverà dentro alla libreria il Libro delle Profezie. " +
+			"Tutti gli altri peschino una carta tesoro"
+		},
+		{
 			"tipo": "Info",
-			"testo": "Questa è la stanza da cui parte la vostra avventura. Buona fortuna!"
+			"testo": "Questa un tempo doveva essere la biblioteca della roccaforte. " +
+			"Ora è solo una stanza con qualche libro rovinato e polveroso sparso qua e là"
 		}
 		]
 	}
