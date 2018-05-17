@@ -179,43 +179,45 @@ var datiLibroProfezie = {
 		"vis2": "se4"
 	}
 	],
-	"mostri" : [// TODO
+	"mostri" : [
 	{
 		"tipo": "fimir",
-		"testoUcciso": "Il mostro lascia cadere una chiave rossa",
+		"testoUcciso": "Il mostro lascia cadere una chiave Gialla",
 		"caselle": ["b22"] 
 	},
-	{
-		"tipo": "fimir",
-		"caselle": ["c17", "r24", "o3", "f6"] 
-	},
+	//{
+	//	"tipo": "fimir",
+	//	"caselle": ["f6"] 
+	//},
 	{
 		"tipo": "goblin",
-		"caselle": ["o5", "p17", "p20", "o21", "n21", "m20", "f21", "f17", "d15", "i4"]
+		"caselle": ["m20", "n21", "d18", "e19"]
 	},
 	{
 		"tipo": "orco",
-		"caselle": ["b4", "d2", "e4", "f7", "h9", "c16", "d16", "c19", "e19"]
+		"caselle": ["l9", "o18", "e4"]
 	},
 	{
 		"tipo": "scheletro",
-		"caselle": ["c3", "c4", "b10", "d10"]
+		"caselle": ["o6", "g8", "g20", "r24"]
 	},
 	{
 		"tipo": "zombie",
-		"caselle": ["b7", "d7"]
+		"caselle": ["p7", "g23"]
 	},
 	{
 		"tipo": "mummia",
-		"caselle": ["c7", "e10"]
+		"caselle": ["e17", "p4"]
 	},
 	{
 		"tipo": "guerrieroCaos",
-		"caselle": ["l15", "p17", "q16"]
+		"testoUcciso": "Il mostro lascia cadere una chiave Blu",
+		"caselle": ["m7"]
 	}	,
 	{
 		"tipo": "gargoyle",
-		"caselle": ["i13"]
+		"testoUcciso": "Il mostro lascia cadere una chiave Rossa",
+		"caselle": ["b2"]
 	}
 	],
 	"muri" : [
