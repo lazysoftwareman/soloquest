@@ -1,11 +1,9 @@
 - Meccanismo teletrasporto
-- Evento all'uccisione di un mostro
 - Introdurre parametro incantesimi caos
 - Gestire incantesimi caos nei mostri
-- Sovrascrivere menu a tendina
 - Info con icona adhoc
 - Cambiare meccanismo fadeout
-- Migliorare mostro errante linkato a info mostro
 - Regolamento
 - Linkare regolamento a menu
-- Sistemare stile tasto home
+- Sistemare stile tasti e menu a tendina
+- Migliorare mostro errante linkato a info mostro

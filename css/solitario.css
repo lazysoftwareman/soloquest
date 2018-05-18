@@ -26,6 +26,30 @@ body {
 	margin: 0;
 	background-image: url(pergamena.jpg);
 }
+.selectAvventura {
+	background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+	height: 29px;
+	overflow: hidden;
+	width: 240px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	background-color: #4BD01B;
+	margin-left: auto;
+    margin-right: auto;
+	text-align: center;
+}
+.selectAvventura select {
+	background: transparent;
+	border: none;
+	font-size: 14px;
+	height: 29px;
+	padding: 5px; /* If you add too much padding here, the options won't show in IE */
+	width: 268px;
+}
+.selectAvventura option:first-child {
+	color: #fff;
+}
 .button, .buttonBack {
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
@@ -158,7 +182,7 @@ input, select {
 	max-width: 90vw;
 	position: relative;
 }
-.centralContent {
+.centralContent, .indexContent {
 	/* margin-top: 20vh; */
 	text-align: center;
 	font-size: 2vh;
