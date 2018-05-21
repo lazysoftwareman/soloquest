@@ -193,6 +193,8 @@ input, select {
 	height: 90%;
 	max-width: 90vw;
 	position: relative;
+	/*TEMP*/
+	/* display: none; */
 }
 .centralContent, .indexContent {
 	/* margin-top: 20vh; */
@@ -272,6 +274,32 @@ input, select {
     vertical-align: middle;
 	color: white;
 	box-sizing: border-box;
+}
+#miniContainer {
+	display: none;
+}
+#miniMap {
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+#miniMap td {
+	border: 2px solid black;
+	box-sizing: border-box;
+}
+.mtr1 td{
+	height: 30px;
+}
+.mtr2 td{
+	height: 60px;
+}
+.mtr3 td{
+	height: 90px;
+}
+.mcol1{
+	width: 30px;
+}
+.mcol2{
+	width: 60px;
 }
 
 .popupMenu {
