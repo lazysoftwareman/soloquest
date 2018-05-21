@@ -28,7 +28,7 @@ function rendiVisibileSpread(origine, daOStanza, a){
 }
 
 function rendiVisibileStanza(stanza, origine){
-	var caselle = stanze[stanza];
+	var caselle = zone[stanza];
 	visualizzaContenuto(caselle, true, origine);
 }
 
@@ -113,8 +113,8 @@ function visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisib
 }
 
 function trovaStanza(primaCasella){
-	for (key in stanze) {
-		if (stanze[key][0] == primaCasella) {
+	for (key in zone) {
+		if (zone[key][0] == primaCasella) {
 			return key;
 		}
 	}

@@ -119,7 +119,7 @@ function getAzionePS(stanza){
 
 function ricercaPS(stanza){
 	var casPorte = trovaCasellePorteSegrete();
-	var caselle = stanze[stanza];
+	var caselle = zone[stanza];
 	var trovata = false;
 	for (var i=0; i<caselle.length; i++){
 		var casella = caselle[i];
