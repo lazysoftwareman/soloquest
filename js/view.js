@@ -431,6 +431,11 @@ function posizionaImmagine(fileName, width, height, td){
 	return immagine;
 }
 
-
+function rendiVisibileMinimap() {
+	for (var i=0; i<caselleViste.length; i++){
+		//per ogni cella rendi visibile la cella in minimap, a meno che non sia un muro
+		//una cella visibile deve essere clickabile e funzione ricerca o ricerca ps
+	}
+}
 
 
