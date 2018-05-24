@@ -431,11 +431,25 @@ function posizionaImmagine(fileName, width, height, td){
 	return immagine;
 }
 
-function rendiVisibileMinimap() {
+function rendiVisibileMinimap(azione) {
+	//azione può essere "ricercaTesoro" o "ricercaPS"
 	for (var i=0; i<caselleViste.length; i++){
-		//per ogni cella rendi visibile la cella in minimap, a meno che non sia un muro
+		var cas = caselleViste[i];
+		if (!isMuro(cas)){
+			rendiVisibileMini(cas, azione);
+		}
 		//una cella visibile deve essere clickabile e funzione ricerca o ricerca ps
 	}
 }
 
+function isMuro(casella) {
+	return trovaMuroInCasella(casella);
+}
 
+function rendiVisibileMini(casella, azione) {
+	var stanza = trovaStanza(casella);
+	var miniCas = "mini"+casella;
+	var miniCell = document.getElementById(miniCas);
+	viewCell(miniCell, colori[stanza]);
+	miniCell.onclick = azione+"('"+casella+"');";
+}

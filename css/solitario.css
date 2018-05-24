@@ -194,7 +194,7 @@ input, select {
 	max-width: 90vw;
 	position: relative;
 	/*TEMP*/
-	display: none;
+	/* display: none; */
 }
 .centralContent, .indexContent {
 	/* margin-top: 20vh; */
@@ -276,7 +276,7 @@ input, select {
 	box-sizing: border-box;
 }
 #miniContainer {
-	/* display: none; */
+	display: none;
 }
 #miniMap {
 	border-collapse: collapse;
