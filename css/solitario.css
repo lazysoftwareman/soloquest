@@ -284,12 +284,13 @@ input, select {
 	background-image: url(pergamenaBW.jpg);
 	background-size: 40% 50%;
 	height: 38vw;
-	width: 52vw;
+	width: 47vw;
+	line-height:1.8vw;
 }
 .miniMap td {
 	border: 0px solid black;
-	height: 2vw;
-	width: 2vw;
+	height: 1.8vw;
+	width: 1.8vw;
 	background-color: #333;
 	padding: 0;
 	text-align: center;

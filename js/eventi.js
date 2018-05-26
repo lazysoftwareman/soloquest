@@ -203,6 +203,7 @@ function azioneMain(azione) {
 	rendiVisibileMinimap(azione);
 	const minimap = document.getElementById("miniContainer").innerHTML;
 	popuppa (minimap);
+	copiaOnclickInPopup();
 	togliIdInPopup();
 }
 
@@ -225,6 +226,27 @@ function togliIdRec (node){
 	}
 }
 
+function copiaOnclickInPopup() {
+	var figli = document.getElementById("risultato").childNodes;
+	for (var i = 0; i < figli.length; i++) {
+		copiaOnclickRec (figli[i]);
+	}
+}
+
+function copiaOnclickRec (node){
+	if (node.id){
+		const realId = node.id;
+		node.id = "temp"+realId;
+		node.onclick = document.getElementById(realId).onclick;
+		node.id = realId;
+	}
+	var contenuti = node.childNodes;
+	if (contenuti && contenuti.length > 0){
+		for (var i = 0; i < contenuti.length; i++) {
+			copiaOnclickRec (contenuti[i]);
+		}
+	}
+}
 
 function ricercaPorteSegrete(casella){
 		alert ("Ricerca porte segrete in zona "+casella);

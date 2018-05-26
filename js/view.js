@@ -112,9 +112,9 @@ function visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisib
 	}
 }
 
-function trovaStanza(primaCasella){
+function trovaStanza(casella){
 	for (key in zone) {
-		if (zone[key][0] == primaCasella) {
+		if (zone[key].indexOf(casella) >= 0) {
 			return key;
 		}
 	}
@@ -446,9 +446,13 @@ function isMuro(casella) {
 }
 
 function rendiVisibileMini(casella, azione) {
-	var stanza = trovaStanza(casella);
-	var miniCas = "mini"+casella;
-	var miniCell = document.getElementById(miniCas);
-	viewCell(miniCell, colori[stanza]);
-	miniCell.onclick = azione+"('"+casella+"');";
+	const stanza = trovaStanza(casella);
+	const miniCas = "mini"+casella;
+	const miniCell = document.getElementById(miniCas);
+	const colore = colori[stanza]? colori[stanza]: "rgba(255,255,255,0.3)";
+	miniCell.style.backgroundColor = colore;
+	miniCell.style.cursor = "pointer";
+	miniCell.onclick = function(){
+		eval(azione+"('"+casella+"')");
+	};
 }

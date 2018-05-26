@@ -7,3 +7,12 @@ function stampArray(array){
 	}
 	return stringa;
 }
+
+function testViewMinimap() {
+	// document.getElementById("tabelloneContainer").style.display = "none";
+	// document.getElementById("miniContainer").style.display = "inline";
+	caselleViste.push.apply(caselleViste,zone['ne1']);
+	caselleViste.push.apply(caselleViste,zone['cis']);
+	caselleViste.push.apply(caselleViste,zone['cmn']);
+	ricercaMain();
+}
