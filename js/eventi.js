@@ -174,18 +174,64 @@ function mostraInfoMostro (mostroTipo){
 	document.getElementById("mostroCom").innerHTML = info.comportamento;
 	const contenuto = document.getElementById("mostroInfoArea").innerHTML;
 	popuppa (contenuto);
+	// var figli = document.getElementById("risultato").childNodes;
+	// var divContainer = figli[1];
+	// for (var i = 0; i < figli.length; i++) {
+		// if (figli[i].className && figli[i].className == "mostroContainer"){
+			// divContainer = figli[i];
+			// break;
+		// }
+	// }
+	// var contenuti = divContainer.childNodes;
+	// for (i = 0; i < contenuti.length; i++) {
+		// if (contenuti[i].id){
+			// contenuti[i].removeAttribute("id");
+		// }
+	// }
+	togliIdInPopup();
+}
+
+function ricercaMain(){
+	azioneMain("ricercaTesoro");
+}
+
+function ricercaPSMain(){
+	azioneMain("ricercaPorteSegrete");
+}
+
+function azioneMain(azione) {
+	rendiVisibileMinimap(azione);
+	const minimap = document.getElementById("miniContainer").innerHTML;
+	popuppa (minimap);
+	togliIdInPopup();
+}
+
+function togliIdInPopup() {
 	var figli = document.getElementById("risultato").childNodes;
-	var divContainer = figli[1];
 	for (var i = 0; i < figli.length; i++) {
-		if (figli[i].className && figli[i].className == "mostroContainer"){
-			divContainer = figli[i];
-			break;
+		togliIdRec (figli[i]);
+	}
+}
+
+function togliIdRec (node){
+	if (node.id){
+		node.removeAttribute("id");
+	}
+	var contenuti = node.childNodes;
+	if (contenuti && contenuti.length > 0){
+		for (var i = 0; i < contenuti.length; i++) {
+			togliIdRec (contenuti[i]);
 		}
 	}
-	var contenuti = divContainer.childNodes;
-	for (i = 0; i < contenuti.length; i++) {
-		if (contenuti[i].id){
-			contenuti[i].removeAttribute("id");
-		}
-	}
+}
+
+
+function ricercaPorteSegrete(casella){
+		alert ("Ricerca porte segrete in zona "+casella);
+		chiudiPoppuppi();
+}
+
+function ricercaTesoro(casella){
+		alert ("Ricerca tesoro in zona "+casella);
+		chiudiPoppuppi();
 }

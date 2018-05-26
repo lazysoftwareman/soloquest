@@ -432,13 +432,12 @@ function posizionaImmagine(fileName, width, height, td){
 }
 
 function rendiVisibileMinimap(azione) {
-	//azione può essere "ricercaTesoro" o "ricercaPS"
+	//azione può essere "ricercaTesoro" o "ricercaPorteSegrete"
 	for (var i=0; i<caselleViste.length; i++){
 		var cas = caselleViste[i];
 		if (!isMuro(cas)){
 			rendiVisibileMini(cas, azione);
 		}
-		//una cella visibile deve essere clickabile e funzione ricerca o ricerca ps
 	}
 }
 

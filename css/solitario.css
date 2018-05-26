@@ -278,7 +278,7 @@ input, select {
 #miniContainer {
 	display: none;
 }
-#miniMap {
+.miniMap {
 	border-collapse: collapse;
 	table-layout: fixed;
 	background-image: url(pergamenaBW.jpg);
@@ -286,7 +286,7 @@ input, select {
 	height: 38vw;
 	width: 52vw;
 }
-#miniMap td {
+.miniMap td {
 	border: 0px solid black;
 	height: 2vw;
 	width: 2vw;
@@ -297,16 +297,16 @@ input, select {
 	color: white;
 	box-sizing: border-box;
 }
-#miniMap .borderSu {
+.miniMap .borderSu {
 	border-top-width: 2px;
 }
-#miniMap .borderDx {
+.miniMap .borderDx {
 	border-right-width: 2px;
 }
-#miniMap .borderSx {
+.miniMap .borderSx {
 	border-left-width: 2px;
 }
-#miniMap .borderGiu {
+.miniMap .borderGiu {
 	border-bottom-width: 2px;
 }
 
