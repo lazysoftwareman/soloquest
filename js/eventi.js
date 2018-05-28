@@ -257,3 +257,32 @@ function ricercaTesoro(casella){
 		alert ("Ricerca tesoro in zona "+casella);
 		chiudiPoppuppi();
 }
+
+function getCaselleValide (sorgente, zona) {
+	var caselle = zona.slice();
+	var filtrate = [];
+	var rimosse = [];
+	filtrate.push(sorgente);
+	var ind = caselle.indexOf(sorgente);
+	if (ind >= 0){
+		caselle.splice(ind,1);
+	}
+	var oldLength = caselle.length;
+	while (caselle.length > 0 || oldLength == caselle.length){
+		oldLength = caselle.length;
+		for (var j=caselle.length-1; j>=0; j--){
+			var casella = caselle[j];
+			for (var i=0; i<filtrate.length; i++){
+				var temp = filtrate[i];
+				if (isAdiacente(casella, temp) && !isMuro(casella)){
+					filtrate.push(temp);
+					caselle.splice(j,1);
+					fattoQualcosa = true;
+					break;
+				}
+			}
+		}
+	}
+	
+	return filtrate;	
+}
