@@ -117,25 +117,6 @@ function getAzionePS(stanza){
 	return azione;
 }
 
-function ricercaPS(stanza){
-	var casPorte = trovaCasellePorteSegrete();
-	var caselle = zone[stanza];
-	var trovata = false;
-	for (var i=0; i<caselle.length; i++){
-		var casella = caselle[i];
-		if (casPorte.indexOf(casella) >= 0){
-			visualizzaPortaSegreta (trovaPortaSegretaInCasella(casella));
-			trovata = true;
-		}
-	}
-	if (trovata){
-		popuppa(testiStandard['RicercaPSOK']);
-	} else {
-		popuppa(testiStandard['RicercaPS']);
-	}
-	
-}
-
 function mostraMenuMostro (mostro, id, x, y){
 	var azioneRimuovi = {
 		"tipo": "RimuoviMostro",
@@ -248,14 +229,50 @@ function copiaOnclickRec (node){
 	}
 }
 
+function ricercaPSZona(caselle){
+	var casPorte = trovaCasellePorteSegrete();
+	var trovata = false;
+	for (var i=0; i<caselle.length; i++){
+		var casella = caselle[i];
+		if (casPorte.indexOf(casella) >= 0){
+			visualizzaPortaSegreta (trovaPortaSegretaInCasella(casella));
+			trovata = true;
+		}
+	}
+	if (trovata){
+		popuppa(testiStandard['RicercaPSOK']);
+	} else {
+		popuppa(testiStandard['RicercaPS']);
+	}	
+}
+
+function ricercaTesoroZona(stanzaOcaselle){
+	if (typeof stanzaOcaselle === 'string'){
+		//è ricerca in stanza
+	} else {
+		//è ricerca in corridoio
+	}
+	//TODO cerca tra gli eventi quelli di tipo tesoro, se non ci sono popuppa una carta, sennò mostra il risultato
+}
+
 function ricercaPorteSegrete(casella){
-		alert ("Ricerca porte segrete in zona "+casella);
-		chiudiPoppuppi();
+	const zona = getZona(casella);
+	const isStanza = !zona.startsWith("c") || zona.length = 1;
+	const caselleZona = zone[zona];		
+	const caselleFiltrate = isStanza ? caselleZona : getCaselleValide(casella, caselleZona);
+	ricercaPSZona(caselleFiltrate);
 }
 
 function ricercaTesoro(casella){
-		alert ("Ricerca tesoro in zona "+casella);
-		chiudiPoppuppi();
+	const zona = getZona(casella);
+	const isStanza = !zona.startsWith("c") || zona.length = 1;
+	if (isStanza) {
+		ricercaTesoroZona(zona);
+	} else {
+		const caselleZona = zone[zona];		
+		const caselleFiltrate = getCaselleValide(casella, caselleZona);
+		ricercaTesoroZona(caselleFiltrate);
+	}
 }
 
 function getCaselleValide (sorgente, zona) {

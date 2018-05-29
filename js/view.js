@@ -120,6 +120,14 @@ function trovaStanza(casella){
 	}
 }
 
+function getZona(casella){
+	for (key in zone) {
+		if (zone[key].indexOf(casella) >= 0) {
+			return key;
+		}
+	}
+}
+
 function trovaCasellePorte() {
 	var porte = dati.porte;
 	var casPorte = [];
