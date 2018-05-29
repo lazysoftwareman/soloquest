@@ -250,26 +250,17 @@ function ricercaTesoroZona(stanzaOcaselle){
 	var evento;
 	if (typeof stanzaOcaselle === 'string'){
 		//Ricerca in stanza
-		evento = trovaEventoInStanza(stanzaOcaselle);		
+		evento = trovaRicercaInStanza(stanzaOcaselle);		
 	} else {
 		//Ricerca in corridoio
-		evento = trovaEventoInCaselle(stanzaOcaselle);	
+		evento = trovaRicercaInStanza(stanzaOcaselle);	
 	}
 	if (evento){
-		const azioni = evento.azioni;
-		var azione = null;
-		for (var i=0; i<azioni.length; i++){
-			var currAzione = azioni[i];
-			if (currAzione.tipo == "ricerca"){
-				azione = currAzione;
-				break;
-			}
+		if (evento.testo){
+			popuppa(evento.testo);
 		}
-		if (azione && azione.testo){
-			popuppa(azione.testo);
-		}
-		if (azione && azione.azione){
-			eval(azione.azione);
+		if (evento.azione){
+			eval(evento.azione);
 		}
 	} else {
 		popuppa(testiStandard['Ricerca']);
@@ -306,21 +297,20 @@ function getCaselleValide (sorgente, zona) {
 		caselle.splice(ind,1);
 	}
 	var oldLength = caselle.length;
-	while (caselle.length > 0 || oldLength == caselle.length){
+	while (caselle.length > 0 || oldLength != caselle.length){
 		oldLength = caselle.length;
 		for (var j=caselle.length-1; j>=0; j--){
 			var casella = caselle[j];
 			for (var i=0; i<filtrate.length; i++){
 				var temp = filtrate[i];
-				if (isAdiacente(casella, temp) && !isMuro(casella)){
-					filtrate.push(temp);
+				if (isAdiacente(casella, temp) && !isMuro(casella) && isVisibile(casella)){
+					filtrate.push(casella);
 					caselle.splice(j,1);
 					fattoQualcosa = true;
 					break;
 				}
 			}
 		}
-	}
-	
+	}	
 	return filtrate;	
 }

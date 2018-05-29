@@ -295,89 +295,32 @@ var datiTemplate = {
 		"vis2": {"da": "j1", "a": "j10"}
 	}				
 	],
-	"eventi" : [ //l'elenco degli eventi. Può essere vuoto
+	"ricerche" : [ //l'elenco delle ricerche. Può essere vuoto
 	{
 		"lettera": "A", //se si vuole mostrare una lettera, non obbligatorio
 		"casella": "l16", //se l'evento non è in una stanza, obbligatorio uno dei due
 		"stanza": "c", //se l'evento è in una stanza, obbligatorio uno dei due
 		"azioni": [ //le azioni da mostrare nel menu a tendina
-		{
-			"tipo": "Ricerca", //Se Ricerca, RicercaPS o Info, non serve la label, obbligatorio
-			"label": "Ricerca tesoro", //Se di tipo diverso da questi 3 standard, non obbligatorio
-			"testo": "Zumpappero", //Se si vuole mostrare un testo, non obbligatorio
-			"azione": "visualizzaMostro(dati.mostri.gargoyle,''a1')" //l'eventuale azione da eseguire, non obbligatorio
-		},
-		{
-			"tipo": "Info",
-			"azione": "La stanza è tutta vuota tranne un cesso nel centro"
-		}
-		]
+		"testo": "Zumpappero", //Se si vuole mostrare un testo, non obbligatorio
+		"azione": "visualizzaMostro(dati.mostri.gargoyle,''a1')" //l'eventuale azione da eseguire, non obbligatorio
 	},
 	{
 		"stanza": "so4",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Non c'è nulla che gli eroi possano volere. Pesca una carta tesoro"
-		},
-		{
-			"tipo": "Info",
-			"testo": "Le armi in questa stanza sono scheggiate"
-		}
-		]
+		"testo": "Non c'è nulla che gli eroi possano volere. Pesca una carta tesoro"
 	},
 	{
 		"stanza": "se5",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Questo scrigno è vuoto. Pesca una carta tesoro"
-		},
-		{
-			"tipo": "RicercaPS",
-			"testo": "Trovate una porta segreta",
-			"azione": "visualizzaPortaSegreta(trovaPortaSegretaInCasella (\"o18\"))"
-		}
-		]
-	},
-	{
-		"stanza": "no2",
-		"azioni": [
-		{
-			"tipo": "Info",
-			"testo": "Questa mummia è la guardia della tomba di Fellmarg, " +
-			"ed era un tempo un possente guerriero. In attacco lancia 4 dadi da combattimento, anziché 3"
-		}
-		]
+		"testo": "Questo scrigno è vuoto. Pesca una carta tesoro"
 	},
 	{
 		"stanza": "no3",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà 84 monete d’oro nello scrigno. " +
+		"testo": "Il primo Eroe che cerca tesori troverà 84 monete d’oro nello scrigno. " +
 			"Tutti gli altri peschino una carta tesoro"
-		}
-		]
 	},
 	{
 		"stanza": "c",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà 120 monete d’oro nello scrigno. " +
+		"testo": "Il primo Eroe che cerca tesori troverà 120 monete d’oro nello scrigno. " +
 			"Tutti gli altri peschino una carta tesoro"
-		}
-		]
-	},
-	{
-		"stanza": "so6",
-		"azioni": [
-		{
-			"tipo": "Info",
-			"testo": "Questa è la stanza da cui parte la vostra avventura. Buona fortuna!"
-		}
-		]
 	}
 	]
 };

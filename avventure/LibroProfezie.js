@@ -74,7 +74,9 @@ var datiLibroProfezie = {
 		"caselle": {"da": "d17", "a": "d18"},
 		"vis1": "ne1",
 		"vis2": "ne2",
-		"blocco": {"testo":"La porta è bloccata. Per entrare avete bisogno della chiave Rossa. Ce l'avete?"}
+		"blocco": {"testo":"La porta è bloccata. Per entrare avete bisogno della chiave Rossa. Ce l'avete?"},
+		"testo": "Questa un tempo doveva essere la biblioteca della roccaforte. " +
+			"Ora è solo una stanza con qualche libro rovinato e polveroso sparso qua e là"
 	},
 	{
 		"caselle": {"da": "e9", "a": "e10"},
@@ -125,18 +127,21 @@ var datiLibroProfezie = {
 		"caselle": {"da": "m9", "a": "n9"},
 		"vis1": "so3",
 		"vis2": "so5",
-		"blocco": {"testo":"La porta è bloccata. Per entrare avete bisogno della chiave Gialla. Ce l'avete?"}
+		"blocco": {"testo":"La porta è bloccata. Per entrare avete bisogno della chiave Gialla. Ce l'avete?"},
+		"testo": "Niente attira particolarmente la vostra attenzione, tranne un vecchio scrigno malridotto"
 	},
 	{
 		"caselle": {"da": "m18", "a": "n18"},
 		"vis1": "se1",
 		"vis2": "se5",
-		"blocco": {"testo":"La porta è bloccata. Per entrare avete bisogno della chiave Blu. Ce l'avete?"}
+		"blocco": {"testo":"La porta è bloccata. Per entrare avete bisogno della chiave Blu. Ce l'avete?"},
+		"testo": "La stanza in passato doveva essere appartenuta a un sapiente alchimista. Ormai è abbandonata da tempo"
 	},
 	{
 		"caselle": {"da": "n4", "a": "o4"},
 		"vis1": "so1",
-		"vis2": "so6"
+		"vis2": "so6",
+		"testo": "Le armi in questa stanza sono quasi tutte danneggiate"
 	},
 	{
 		"caselle": {"da": "p21", "a": "p22"},
@@ -156,7 +161,8 @@ var datiLibroProfezie = {
 	{
 		"caselle": {"da": "r12", "a": "s12"},
 		"vis1": "so4",
-		"vis2": {"da": "s1", "a": "s26"}
+		"vis2": {"da": "s1", "a": "s26"},
+		"testo": "Le armi in questa stanza sono quasi tutte danneggiate"
 	}
 	],
 	"porteSegrete" : [
@@ -164,7 +170,8 @@ var datiLibroProfezie = {
 		"caselle": {"da": "d4", "a": "e4"},
 		"posizione": "N",
 		"vis1": "no1",
-		"vis2": "no5"
+		"vis2": "no5",
+		"testo": "Uno splendido scrigno finemente lavorato si trova su un lato della stanza"
 	},
 	{
 		"caselle": {"da": "e20", "a": "f20"},
@@ -332,91 +339,36 @@ var datiLibroProfezie = {
 		"vis2": {"da": "a21", "a": "a26"}
 	}						
 	],
-	"eventi" : [
+	"ricerche" : [
 	{
 		"stanza": "so6",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà uno spadone. " +
+		"testo": "Il primo Eroe che cerca tesori troverà uno spadone. " +
 			"Tutti gli altri peschino una carta tesoro"
-		},
-		{
-			"tipo": "Info",
-			"testo": "Le armi in questa stanza sono quasi tutte danneggiate"
-		}
-		]
 	},
 	{
 		"stanza": "so4",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà la Corazza di Borin. " +
+		"testo": "Il primo Eroe che cerca tesori troverà la Corazza di Borin. " +
 			"Tutti gli altri peschino una carta tesoro"
-		},
-		{
-			"tipo": "Info",
-			"testo": "Nella stanza troneggia un armadio finemente lavorato"
-		}
-		]
 	},
 	{
 		"stanza": "se5",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà una gemma del valore di 100 mo dentro un cassetto " +
+		"testo": "Il primo Eroe che cerca tesori troverà una gemma del valore di 100 mo dentro un cassetto " +
 			"del tavolo dell'alchimista. Tutti gli altri peschino una carta tesoro"
-		},
-		{
-			"tipo": "Info",
-			"testo": "La stanza in passato doveva essere appartenuta a un sapiente alchimista. Ormai è abbandonata da tempo"
-		}
-		]
 	},
 	{
 		"stanza": "so5",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà 100 mo dentro un vecchio scrigno malridotto. " +
+		"testo": "Il primo Eroe che cerca tesori troverà 100 mo dentro un vecchio scrigno malridotto. " +
 			"Tutti gli altri peschino una carta tesoro"
-		},
-		{
-			"tipo": "Info",
-			"testo": "Niente attira particolarmente la vostra attenzione, tranne un vecchio scrigno malridotto"
-		}
-		]
 	},
 	{
 		"stanza": "no1",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà 150 mo nello scrigno protetto dal Gargoyle. " +
+		"testo": "Il primo Eroe che cerca tesori troverà 150 mo nello scrigno protetto dal Gargoyle. " +
 			"Tutti gli altri peschino una carta tesoro"
-		},
-		{
-			"tipo": "Info",
-			"testo": "Uno splendido scrigno finemente lavorato si trova su un lato della stanza"
-		}
-		]
 	},
 	{
-		"stanza": "no1",
-		"azioni": [
-		{
-			"tipo": "Ricerca",
-			"testo": "Il primo Eroe che cerca tesori troverà dentro alla libreria il Libro delle Profezie. " +
+		"stanza": "ne1",
+		"testo": "Il primo Eroe che cerca tesori troverà dentro alla libreria il Libro delle Profezie. " +
 			"Tutti gli altri peschino una carta tesoro"
-		},
-		{
-			"tipo": "Info",
-			"testo": "Questa un tempo doveva essere la biblioteca della roccaforte. " +
-			"Ora è solo una stanza con qualche libro rovinato e polveroso sparso qua e là"
-		}
-		]
 	}
 	]
 };

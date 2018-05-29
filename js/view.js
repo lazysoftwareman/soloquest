@@ -63,16 +63,14 @@ function visualizzaContenuto (original, isStanza, sorgente){
 	var casMostri = trovaCaselleMostri();
 	var casMuri = trovaCaselleMuri();
 	var casVisibilita = trovaCaselleVisibilita();
-	var casEventi = trovaCaselleEventi();
 	var stanza = isStanza? trovaStanza(angolino): "corridoio";
-	visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisibilita, casEventi, stanza, caselle, 0, isStanza);
+	visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisibilita, stanza, caselle, 0, isStanza);
 	if (isStanza && stanzeViste.indexOf(stanza) < 0){
-		visualizzaAzioniStanza(angolino, stanza);
 		stanzeViste.push(stanza);
 	}
 }
 
-function visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisibilita, casEventi, stanza, caselle, i, isStanza) {
+function visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisibilita, stanza, caselle, i, isStanza) {
 	if (i<caselle.length){
 		var casella = caselle[i];
 		if (caselleViste.indexOf(casella) < 0){
@@ -98,16 +96,10 @@ function visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisib
 			if (casVisibilita.indexOf(casella) >= 0){
 				visualizzaVisibilita (trovaVisibilitaInCasella(casella));
 			}
-			//eventi
-			if (!isStanza){
-				if (casEventi.indexOf(casella) >= 0){
-					visualizzaEvento (trovaEventoInCasella(casella));
-				}
-			}
 			caselleViste.push(casella);
 		}
 		setTimeout(function() {
-			visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisibilita, casEventi, stanza, caselle, i+1, isStanza);
+			visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisibilita, stanza, caselle, i+1, isStanza);
 		}, 50)
 	}
 }
@@ -260,8 +252,17 @@ function trovaEventoInStanza(stanza){
 	}
 }
 
-function trovaEventoInCaselle(caselle){
-	var eventi = dati.eventi;	
+function trovaRicercaInStanza(stanza){
+	var eventi = dati.ricerche;	
+	for (var i=0; i<eventi.length; i++){
+		if (eventi[i].stanza && eventi[i].stanza == stanza) {
+			return eventi[i];
+		}
+	}
+}
+
+function trovaRicercaInCaselle(caselle){
+	var eventi = dati.ricerche;	
 	for (var i=0; i<eventi.length; i++){
 		if (eventi[i].casella && caselle.indexOf(eventi[i].casella) >=0) {
 			return eventi[i];
@@ -460,6 +461,10 @@ function rendiVisibileMinimap(azione) {
 
 function isMuro(casella) {
 	return trovaMuroInCasella(casella);
+}
+
+function isVisibile(casella) {
+	return caselleViste.indexOf(casella) >= 0;
 }
 
 function rendiVisibileMini(casella, azione) {

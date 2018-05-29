@@ -87,7 +87,7 @@ labelStandard['Info'] = "Informazioni";
 
 var testiStandard = [];
 testiStandard['Ricerca'] = "Pesca una carta tesoro";
-testiStandard['RicercaPS'] = "Nessuna porta segreta nella stanza";
+testiStandard['RicercaPS'] = "Nessuna porta segreta trovata";
 testiStandard['RicercaPSOK'] = "Avete trovato una porta segreta!";
 testiStandard['Info'] = "Niente attira particolarmente la vostra attenzione";
 
