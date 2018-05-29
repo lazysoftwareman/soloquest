@@ -260,6 +260,15 @@ function trovaEventoInStanza(stanza){
 	}
 }
 
+function trovaEventoInCaselle(caselle){
+	var eventi = dati.eventi;	
+	for (var i=0; i<eventi.length; i++){
+		if (eventi[i].casella && caselle.indexOf(eventi[i].casella) >=0) {
+			return eventi[i];
+		}
+	}
+}
+
 function trovaPortaSegretaInCasella (casella){
 	var porte = dati.porteSegrete;
 	for (var i=0; i<porte.length; i++){

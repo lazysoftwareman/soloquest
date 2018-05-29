@@ -247,12 +247,33 @@ function ricercaPSZona(caselle){
 }
 
 function ricercaTesoroZona(stanzaOcaselle){
+	var evento;
 	if (typeof stanzaOcaselle === 'string'){
-		//è ricerca in stanza
+		//Ricerca in stanza
+		evento = trovaEventoInStanza(stanzaOcaselle);		
 	} else {
-		//è ricerca in corridoio
+		//Ricerca in corridoio
+		evento = trovaEventoInCaselle(stanzaOcaselle);	
 	}
-	//TODO cerca tra gli eventi quelli di tipo tesoro, se non ci sono popuppa una carta, sennò mostra il risultato
+	if (evento){
+		const azioni = evento.azioni;
+		var azione = null;
+		for (var i=0; i<azioni.length; i++){
+			var currAzione = azioni[i];
+			if (currAzione.tipo == "ricerca"){
+				azione = currAzione;
+				break;
+			}
+		}
+		if (azione && azione.testo){
+			popuppa(azione.testo);
+		}
+		if (azione && azione.azione){
+			eval(azione.azione);
+		}
+	} else {
+		popuppa(testiStandard['Ricerca']);
+	}
 }
 
 function ricercaPorteSegrete(casella){
