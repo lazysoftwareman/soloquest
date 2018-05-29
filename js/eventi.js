@@ -278,7 +278,7 @@ function ricercaTesoroZona(stanzaOcaselle){
 
 function ricercaPorteSegrete(casella){
 	const zona = getZona(casella);
-	const isStanza = !zona.startsWith("c") || zona.length = 1;
+	const isStanza = !zona.startsWith("c") || zona.length == 1;
 	const caselleZona = zone[zona];		
 	const caselleFiltrate = isStanza ? caselleZona : getCaselleValide(casella, caselleZona);
 	ricercaPSZona(caselleFiltrate);
@@ -286,7 +286,7 @@ function ricercaPorteSegrete(casella){
 
 function ricercaTesoro(casella){
 	const zona = getZona(casella);
-	const isStanza = !zona.startsWith("c") || zona.length = 1;
+	const isStanza = !zona.startsWith("c") || zona.length == 1;
 	if (isStanza) {
 		ricercaTesoroZona(zona);
 	} else {
