@@ -181,7 +181,15 @@ function ricercaPSMain(){
 }
 
 function azioneMain(azione) {
+	//azione può essere "ricercaTesoro" o "ricercaPorteSegrete"
 	rendiVisibileMinimap(azione);
+	var azioneText = "";
+	if (azione == "ricercaTesoro"){
+		azioneText = "Ricerca tesoro";
+	} else if (azione == "ricercaPorteSegrete"){
+		azioneText = "Ricerca porte segrete";
+	}
+	document.getElementById("miniAzione").innerHTML = azioneText;
 	const minimap = document.getElementById("miniContainer").innerHTML;
 	popuppa (minimap);
 	copiaOnclickInPopup();
