@@ -449,12 +449,15 @@ function posizionaImmagine(fileName, width, height, td){
 	return immagine;
 }
 
-function rendiVisibileMinimap(azione) {
+function rendiVisibileMap(azione) {
 	//azione può essere "ricercaTesoro" o "ricercaPorteSegrete"
+	immaginiNascoste = [];
+	caselleResettate = [];
+	divPosizione = [];
 	for (var i=0; i<caselleViste.length; i++){
 		var cas = caselleViste[i];
 		if (!isMuro(cas)){
-			rendiVisibileMini(cas, azione);
+			rendiVisibileDivMap(cas, azione);
 		}
 	}
 }
@@ -467,14 +470,40 @@ function isVisibile(casella) {
 	return caselleViste.indexOf(casella) >= 0;
 }
 
-function rendiVisibileMini(casella, azione) {
-	const stanza = trovaStanza(casella);
-	const miniCas = "mini"+casella;
-	const miniCell = document.getElementById(miniCas);
-	const colore = colori[stanza]? colori[stanza]: "rgba(255,255,255,0.3)";
-	miniCell.style.backgroundColor = colore;
-	miniCell.style.cursor = "pointer";
-	miniCell.onclick = function(){
-		eval(azione+"('"+casella+"')");
+function rendiVisibileDivMap(casella, azione) {
+	const cell = document.getElementById(casella);
+	if (cell.childNodes && cell.childNodes.length > 0 && cell.childNodes[0].nodeName.toLowerCase() == 'img'){
+		cell.childNodes[0].style.display = "none";
+		if (!cell.childNodes[0].id){
+			cell.childNodes[0].id = "img"+cell.id;
+		}
+		immaginiNascoste.push(cell.childNodes[0].id);
+	} else {
+		cell.innerHTML = "";
+		caselleResettate.push(cell.id);
+	}
+	var theDiv = document.createElement("div");
+	theDiv.className = "divPosizione";
+	theDiv.id = "pos"+cell.id;
+	theDiv.onclick = function(){
+		ripristinaEAzione(casella, azione);
 	};
+	cell.appendChild(theDiv);
+	divPosizione.push(theDiv.id);
+}
+
+function ripristinaEAzione(casella, azione) {
+	for (var i=0; i<divPosizione.length; i++){
+		var divpos = document.getElementById(divPosizione[i]);
+		divpos.parentNode.removeChild(divpos);
+	}
+	for (var i=0; i<immaginiNascoste.length; i++){
+		var immagine = document.getElementById(immaginiNascoste[i]);
+		immagine.style.display = "inline";
+	}
+	for (var i=0; i<caselleResettate.length; i++){
+		var cella = document.getElementById(caselleResettate[i]);
+		cella.innerHTML = "&nbsp;";
+	}
+	eval(azione+"('"+casella+"')");
 }

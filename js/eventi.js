@@ -182,18 +182,15 @@ function ricercaPSMain(){
 
 function azioneMain(azione) {
 	//azione può essere "ricercaTesoro" o "ricercaPorteSegrete"
-	rendiVisibileMinimap(azione);
+	rendiVisibileMap(azione);
 	var azioneText = "";
 	if (azione == "ricercaTesoro"){
 		azioneText = "Ricerca tesoro";
 	} else if (azione == "ricercaPorteSegrete"){
 		azioneText = "Ricerca porte segrete";
 	}
-	document.getElementById("miniAzione").innerHTML = azioneText;
-	const minimap = document.getElementById("miniContainer").innerHTML;
-	popuppa (minimap);
-	copiaOnclickInPopup();
-	togliIdInPopup();
+	var testoTotal = "<b>"+azioneText+"</b>:<br>Indica sulla mappa la posizione dell'eroe";
+	popuppa (testoTotal);
 }
 
 function togliIdInPopup() {
