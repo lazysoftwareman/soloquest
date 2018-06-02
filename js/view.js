@@ -471,14 +471,19 @@ function isVisibile(casella) {
 }
 
 function rendiVisibileDivMap(casella, azione) {
-	const cell = document.getElementById(casella);
-	if (cell.childNodes && cell.childNodes.length > 0 && cell.childNodes[0].nodeName.toLowerCase() == 'img'){
-		cell.childNodes[0].style.display = "none";
-		if (!cell.childNodes[0].id){
-			cell.childNodes[0].id = "img"+cell.id;
+	const tutte = getCaselle('a1', 's26');
+	for (var i=0; i<tutte.length; i++){
+		var cella = document.getElementById(tutte[i]);
+		if (cella.childNodes && cella.childNodes.length > 0 && cella.childNodes[0].nodeName.toLowerCase() == 'img'){
+			cella.childNodes[0].style.display = "none";
+			if (!cella.childNodes[0].id){
+				cella.childNodes[0].id = "img"+cella.id;
+			}
+			immaginiNascoste.push(cella.childNodes[0].id);
 		}
-		immaginiNascoste.push(cell.childNodes[0].id);
-	} else {
+	}
+	const cell = document.getElementById(casella);
+	if (!cell.childNodes || cell.childNodes.length == 0 || cell.childNodes[0].nodeName.toLowerCase() != 'img'){
 		cell.innerHTML = "";
 		caselleResettate.push(cell.id);
 	}

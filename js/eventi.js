@@ -301,8 +301,8 @@ function getCaselleValide (sorgente, zona) {
 	if (ind >= 0){
 		caselle.splice(ind,1);
 	}
-	var oldLength = caselle.length;
-	while (caselle.length > 0 || oldLength != caselle.length){
+	var oldLength = caselle.length+1;
+	while (caselle.length > 0 && oldLength != caselle.length){
 		oldLength = caselle.length;
 		for (var j=caselle.length-1; j>=0; j--){
 			var casella = caselle[j];
