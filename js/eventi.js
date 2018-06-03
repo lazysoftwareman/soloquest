@@ -295,7 +295,6 @@ function ricercaTesoro(casella){
 function getCaselleValide (sorgente, zona) {
 	var caselle = zona.slice();
 	var filtrate = [];
-	var rimosse = [];
 	filtrate.push(sorgente);
 	var ind = caselle.indexOf(sorgente);
 	if (ind >= 0){

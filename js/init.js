@@ -79,9 +79,6 @@ colori['so6'] = "rgba(100,104,109,0.3)";
 
 const caselleViste = [];
 const stanzeViste = [];
-var immaginiNascoste = [];
-var caselleResettate = [];
-var divPosizione = [];
 
 var labelStandard = [];
 labelStandard['Ricerca'] = "Ricerca tesoro";

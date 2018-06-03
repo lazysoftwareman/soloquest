@@ -1,5 +1,12 @@
 //GESTIONE VISIBILITA
 
+var immaginiNascoste = [];
+var caselleResettate = [];
+var divPosizione = [];
+
+const porteViste = [];
+const mobiliVisti = [];
+
 function rendiVisibileStart(){
 	if (dati.start.caselle){
 		rendiVisibile(dati.start.caselle.da, dati.start.caselle.a);
@@ -282,28 +289,32 @@ function trovaPortaSegretaInCasella (casella){
 function visualizzaPorta (porta) {
 	var cas1 = porta.caselle.da;
 	var cas2 = porta.caselle.a;
-	var orizzontale = !isOrizzontale(cas1, cas2);
-	var offsetPorta = dCel/2;
-	const width = dCel;
-	const height = dCel;
-	const src = orizzontale? "portaO" : "portaV";
-	var casella = document.getElementById(cas1);
-	if (casella){
-	} else {
-		casella = document.getElementById(cas2);
-		offsetPorta = -dCel/2;
+	var idPorta = "porta"+cas1+cas2;
+	if (porteViste.indexOf(idPorta) < 0){
+		var orizzontale = !isOrizzontale(cas1, cas2);
+		var offsetPorta = dCel/2;
+		const width = dCel;
+		const height = dCel;
+		const src = orizzontale? "portaO" : "portaV";
+		var casella = document.getElementById(cas1);
+		if (casella){
+		} else {
+			casella = document.getElementById(cas2);
+			offsetPorta = -dCel/2;
+		}
+		var img = posizionaImmagine(src, width, height, casella);
+		img.title = "Apri la porta";
+		img.style.cursor = "pointer";
+		if (orizzontale){
+			img.style.marginTop = offsetPorta + "px";
+		} else {
+			img.style.marginLeft = offsetPorta + "px";
+		}
+		img.onclick = function(){
+			apriPorta(porta);
+		};
+		porteViste.push(idPorta);
 	}
-	var img = posizionaImmagine(src, width, height, casella);
-	img.title = "Apri la porta";
-	img.style.cursor = "pointer";
-	if (orizzontale){
-		img.style.marginTop = offsetPorta + "px";
-	} else {
-		img.style.marginLeft = offsetPorta + "px";
-	}
-	img.onclick = function(){
-		apriPorta(porta);
-	};
 }
 
 function visualizzaPortaSegreta (porta) {
@@ -325,14 +336,19 @@ function visualizzaPortaSegreta (porta) {
 
 function visualizzaMobile (mobile) {
 	var cas1 = mobile.caselle.da;
-	var nCasO = getNumeroCaselleOrizzontali(mobile.caselle.da, mobile.caselle.a);
-	var nCasV = getNumeroCaselleVerticali(mobile.caselle.da, mobile.caselle.a);
-	const src = mobile.tipo + mobile.posizione;
-	const height = nCasV*dCel-4;
-	const width = nCasO*dCel-4;
-	var immagine = posizionaImmagine(src, width, height, document.getElementById(cas1));	
-	immagine.style.marginLeft = "1px";
-	immagine.style.marginTop = "1px";
+	var cas2 = mobile.caselle.a;
+	var idMobile = "mobile"+cas1+cas2;
+		if (mobiliVisti.indexOf(idMobile) < 0){
+		var nCasO = getNumeroCaselleOrizzontali(mobile.caselle.da, mobile.caselle.a);
+		var nCasV = getNumeroCaselleVerticali(mobile.caselle.da, mobile.caselle.a);
+		const src = mobile.tipo + mobile.posizione;
+		const height = nCasV*dCel-4;
+		const width = nCasO*dCel-4;
+		var immagine = posizionaImmagine(src, width, height, document.getElementById(cas1));	
+		immagine.style.marginLeft = "1px";
+		immagine.style.marginTop = "1px";
+		mobiliVisti.push(idMobile);
+	}
 }
 
 function visualizzaMostro (mostro, casella) {
