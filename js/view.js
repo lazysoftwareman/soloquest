@@ -81,8 +81,7 @@ function visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisib
 	if (i<caselle.length){
 		var casella = caselle[i];
 		if (caselleViste.indexOf(casella) < 0){
-			viewCell(document.getElementById(casella), colori[stanza]);			
-			//document.getElementById(casella).style.backgroundColor = colori[stanza];
+			var trovatoMuro = false;
 			//porte
 			if (casPorte.indexOf(casella) >= 0){
 				visualizzaPorta (trovaPortaInCasella(casella));
@@ -98,6 +97,10 @@ function visualizzaCaselleRec (casPorte, casMobili, casMostri, casMuri, casVisib
 			//muri
 			if (casMuri.indexOf(casella) >= 0){
 				visualizzaMuro (trovaMuroInCasella(casella), casella);
+				trovatoMuro = true;
+			}
+			if (!trovatoMuro){
+				viewCell(document.getElementById(casella), colori[stanza]);
 			}
 			//visibilita
 			if (casVisibilita.indexOf(casella) >= 0){
@@ -474,6 +477,9 @@ function rendiVisibileMap(azione) {
 		var cas = caselleViste[i];
 		if (!isMuro(cas)){
 			rendiVisibileDivMap(cas, azione);
+		} else {
+			//var cella = document.getElementById(cas);
+			//cella.style.backgroundColor = "#333";
 		}
 	}
 }
