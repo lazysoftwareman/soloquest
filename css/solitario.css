@@ -191,7 +191,9 @@ input, select {
 #tabelloneContainer {
 	overflow: auto;
 	height: 90%;
-	max-width: 90vw;
+	max-height: 570px;
+	width: 90vw;
+	max-width: 780px;
 	position: relative;
 	/*TEMP*/
 	/* display: none; */
@@ -426,4 +428,17 @@ input, select {
 	.testoContent div, .risultato {	
 		border-color: transparent;
 	}
+}
+
+@media all and (orientation: landscape) {
+	#tabelloneContainer {
+		width: 80vw;
+	}
+}
+
+@media all and (orientation: portrait) {
+	#tabelloneContainer {
+		height: 80%;
+	}
+	
 }
