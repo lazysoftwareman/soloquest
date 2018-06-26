@@ -136,14 +136,10 @@
 <div class="container">
 	<!-- <input type="button" value="Start" onclick="startAvventura();"/>&nbsp; -->
 	<!-- <input type="button" value="Non cliccare" onclick="mostraTutto();"/>&nbsp; -->
-	<input type="button" value="Celle" onclick="mostraCelle();"/>
+	<!-- <input type="button" value="Celle" onclick="mostraCelle();"/> -->
 	<!-- <input type="button" value="Testa" onclick="testaRiordina();"/> -->
 	<div class="titoloAvventura">	
-		<!-- <span class="h1"><input type="button" class="buttonBack" value="<" onclick="goHome();"/></span> -->
-		<span class="h1"><input type="button" class="buttonBack" value="<" onclick="ricercaMain();"/></span>
 		<span class="h1" id="titoloAvventura"></span>
-		<!-- <span class="h1"><input type="button" value="I" onclick="mostraInfoAvventura();"/></span> -->
-		<span class="h1"><input type="button" value="I" onclick="ricercaPSMain();"/></span>
 	</div>
 	<div id="tabelloneContainer">
 	<table id="tabellone" class="tabellone">
@@ -681,6 +677,12 @@
 		</tr>
 	</table>
 	</div>	
+	<div id="toolbar" class="toolbar">
+		<div class="toolbarButton" style="background-color: red;" onclick="mostraInfoAvventura();"></div>
+		<div class="toolbarButton" style="background-color: yellow;" onclick="ricercaMain();"></div>
+		<div class="toolbarButton" style="background-color: green;" onclick="ricercaPSMain();"></div>
+		<div class="toolbarButton" style="background-color: blue;" onclick="goHome();"></div>
+	</div>
 	<div id="overlay" class="overlay" onclick="chiudiPoppuppi();" style="display:none;"></div>
 	<div id="risultato" class="risultato animation">&nbsp;</div>
 	<br/>

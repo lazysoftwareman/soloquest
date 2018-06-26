@@ -198,6 +198,12 @@ input, select {
 	/*TEMP*/
 	/* display: none; */
 }
+#toolbar {
+	border: 2px solid black;
+}
+.toolbarButton {
+	cursor: pointer;	
+}
 .centralContent, .indexContent {
 	/* margin-top: 20vh; */
 	text-align: center;
@@ -433,6 +439,16 @@ input, select {
 @media all and (orientation: landscape) {
 	#tabelloneContainer {
 		width: 80vw;
+		float: left;
+	}
+	#toolbar {
+		height: 90%;
+		width: 9vw;
+		float: left;
+	}	
+	.toolbarButton {
+		width: 100%;
+		height: 25%;
 	}
 }
 
@@ -440,5 +456,13 @@ input, select {
 	#tabelloneContainer {
 		height: 80%;
 	}
-	
+	#toolbar {
+		height: 9.5%;
+		width: 90vw;
+	}	
+	.toolbarButton {
+		height: 100%;
+		width: 25%;
+		float: left;
+	}
 }
