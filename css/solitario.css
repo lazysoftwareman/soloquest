@@ -200,6 +200,9 @@ input, select {
 }
 #toolbar {
 	border: 2px solid black;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+	
 }
 .toolbarButton {
 	cursor: pointer;	
@@ -445,6 +448,7 @@ input, select {
 		height: 90%;
 		width: 9vw;
 		float: left;
+		background-image: url(toolbarV.jpg);
 	}	
 	.toolbarButton {
 		width: 100%;
@@ -459,6 +463,7 @@ input, select {
 	#toolbar {
 		height: 9.5%;
 		width: 90vw;
+		background-image: url(toolbarO.jpg);
 	}	
 	.toolbarButton {
 		height: 100%;
