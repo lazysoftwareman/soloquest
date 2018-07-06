@@ -678,10 +678,22 @@
 	</table>
 	</div>	
 	<div id="toolbar" class="toolbar">
-		<div class="toolbarButton" style="background-color: rgba(255, 0, 0, 0.5);" onclick="mostraInfoAvventura();"></div>
-		<div class="toolbarButton" style="background-color: rgba(255, 255, 0, 0.5);" onclick="ricercaMain();"></div>
-		<div class="toolbarButton" style="background-color: rgba(0, 255, 0, 0.5);" onclick="ricercaPSMain();"></div>
-		<div class="toolbarButton" style="background-color: rgba(0, 0, 255, 0.5);" onclick="goHome();"></div>
+		<div id="buttonInfo" class="toolbarButton">
+			<span class="helper"></span>
+			<img class="toolbarButtonImg" src="img/buttonInfo.png" onclick="mostraInfoAvventura();"/>
+		</div>
+		<div id="buttonRicerca" class="toolbarButton">
+			<span class="helper"></span>
+			<img class="toolbarButtonImg" src="img/buttonRicerca.png" onclick="ricercaMain();"/>
+		</div>
+		<div id="buttonRicercaPS" class="toolbarButton">
+			<span class="helper"></span>
+			<img class="toolbarButtonImg" src="img/buttonRicercaPS.png" onclick="ricercaPSMain();"/>
+		</div>
+		<div id="buttonExit" class="toolbarButton">
+			<span class="helper"></span>
+			<img class="toolbarButtonImg" src="img/buttonExit.png" onclick="goHome();"/>
+		</div>
 	</div>
 	<div id="overlay" class="overlay" onclick="chiudiPoppuppi();" style="display:none;"></div>
 	<div id="risultato" class="risultato animation">&nbsp;</div>
