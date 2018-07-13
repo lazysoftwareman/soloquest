@@ -102,7 +102,7 @@
 	
 	function mostraInfoAvventura() {
 		var testo = dati.testo;
-		var merrante = "<img src='img/" + dati.mostroErrante + ".png' class='mostroErrante' onclick='mostraInfoMostro (\""+mostri[dati.mostroErrante].tipo+"\");'/>";
+		var merrante = "<img src='img/" + dati.mostroErrante + ".png' class='mostroErrante' onclick='event.stopPropagation(); mostraInfoMostro (\""+mostri[dati.mostroErrante].tipo+"\");'/>";
 		merrante += "&nbsp;Mostro errante: " + mostri[dati.mostroErrante].nome;
 		testo += "<br><br>" + merrante;
 		popuppa (testo);
@@ -696,7 +696,7 @@
 		</div>
 	</div>
 	<div id="overlay" class="overlay" onclick="chiudiPoppuppi();" style="display:none;"></div>
-	<div id="risultato" class="risultato animation">&nbsp;</div>
+	<div id="risultato" class="risultato animation" onclick="chiudiPoppuppi();">&nbsp;</div>
 	<br/>
 	<div id="mostroInfoArea" style="visibility: hidden; display: none;">
 		<div class="mostroContainer">
