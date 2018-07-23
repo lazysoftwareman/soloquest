@@ -202,10 +202,7 @@ input, select {
 	border: 2px solid black;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-	box-sizing: border-box;
-	max-height: 590px;
-	max-width: 800px;
-	
+	box-sizing: border-box;	
 }
 .toolbarButtonImg {
 	cursor: pointer;	
@@ -449,7 +446,9 @@ input, select {
 	}
 	#toolbar {
 		height: 90%;
-		width: 9vw;
+		width: 9vw;		
+		max-height: 570px;
+		max-width: 120px;
 		float: left;
 		background-image: url(toolbarV.jpg);
 	}	
@@ -478,7 +477,9 @@ input, select {
 	}
 	#toolbar {
 		height: 9.5%;
-		width: 90vw;
+		width: 90vw;		
+		max-height: 120px;
+		max-width: 780px;
 		background-image: url(toolbarO.jpg);
 	}	
 	.toolbarButton {
