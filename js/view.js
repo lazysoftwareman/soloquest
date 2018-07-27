@@ -9,7 +9,7 @@ const mobiliVisti = [];
 
 function rendiVisibileStart(){
 	if (dati.start.caselle){
-		rendiVisibile(dati.start.caselle.da, dati.start.caselle.a);
+		rendiVisibile(getDa(dati.start.caselle), getA(dati.start.caselle));
 	} else {
 		rendiVisibile(dati.start.stanza);
 	}
@@ -134,8 +134,8 @@ function trovaCasellePorte() {
 	var porte = dati.porte;
 	var casPorte = [];
 	for (var i=0; i<porte.length; i++){
-		casPorte.push(porte[i].caselle.da);
-		casPorte.push(porte[i].caselle.a);
+		casPorte.push(getDa(porte[i].caselle));
+		casPorte.push(getA(porte[i].caselle));
 	}
 	return casPorte;
 }
@@ -144,8 +144,8 @@ function trovaCasellePorteSegrete() {
 	var porte = dati.porteSegrete;
 	var casPorte = [];
 	for (var i=0; i<porte.length; i++){
-		casPorte.push(porte[i].caselle.da);
-		casPorte.push(porte[i].caselle.a);
+		casPorte.push(getDa(porte[i].caselle));
+		casPorte.push(getA(porte[i].caselle));
 	}
 	return casPorte;
 }
@@ -154,8 +154,8 @@ function trovaCaselleMobili() {
 	var mobili = dati.mobili;
 	var casMobili = [];
 	for (var i=0; i<mobili.length; i++){
-		casMobili.push(mobili[i].caselle.da);
-		casMobili.push(mobili[i].caselle.a);
+		casMobili.push(getDa(mobili[i].caselle));
+		casMobili.push(getA(mobili[i].caselle));
 	}
 	return casMobili;
 }
@@ -199,7 +199,7 @@ function trovaCaselleEventi() {
 function trovaPortaInCasella(casella){
 	var porte = dati.porte;
 	for (var i=0; i<porte.length; i++){
-		if (casella == porte[i].caselle.da || casella == porte[i].caselle.a) {
+		if (casella == getDa(porte[i].caselle) || casella == getA(porte[i].caselle)) {
 			return porte[i];
 		}
 	}
@@ -208,7 +208,7 @@ function trovaPortaInCasella(casella){
 function trovaMobileInCasella(casella){
 	var mobili = dati.mobili;	
 	for (var i=0; i<mobili.length; i++){
-		var casMobili = getCaselle(mobili[i].caselle.da, mobili[i].caselle.a);
+		var casMobili = getCaselle(getDa(mobili[i].caselle), getA(mobili[i].caselle));
 		if (casMobili.indexOf(casella) >=0) {
 			return mobili[i];
 		}
@@ -283,15 +283,15 @@ function trovaRicercaInCaselle(caselle){
 function trovaPortaSegretaInCasella (casella){
 	var porte = dati.porteSegrete;
 	for (var i=0; i<porte.length; i++){
-		if (casella == porte[i].caselle.da || casella == porte[i].caselle.a) {
+		if (casella == getDa(porte[i].caselle) || casella == getA(porte[i].caselle)) {
 			return porte[i];
 		}
 	}
 }
 
 function visualizzaPorta (porta) {
-	var cas1 = porta.caselle.da;
-	var cas2 = porta.caselle.a;
+	var cas1 = getDa(porta.caselle);
+	var cas2 = getA(porta.caselle);
 	var idPorta = "porta"+cas1+cas2;
 	if (porteViste.indexOf(idPorta) < 0){
 		var orizzontale = !isOrizzontale(cas1, cas2);
@@ -321,8 +321,8 @@ function visualizzaPorta (porta) {
 }
 
 function visualizzaPortaSegreta (porta) {
-	var cas1 = porta.caselle.da;
-	var cas2 = porta.caselle.a;
+	var cas1 = getDa(porta.caselle);
+	var cas2 = getA(porta.caselle);
 	var posizione = porta.posizione;
 	var orizzontale = isOrizzontale(cas1, cas2);
 	var casella = orizzontale && posizione == "O" ? cas1 : orizzontale && posizione == "E" ? cas2 : !orizzontale && posizione == "N" ? cas1 : !orizzontale && posizione == "S" ? cas2 : cas1;
@@ -338,12 +338,12 @@ function visualizzaPortaSegreta (porta) {
 }
 
 function visualizzaMobile (mobile) {
-	var cas1 = mobile.caselle.da;
-	var cas2 = mobile.caselle.a;
+	var cas1 = getDa(mobile.caselle);
+	var cas2 = getA(mobile.caselle);
 	var idMobile = "mobile"+cas1+cas2;
 		if (mobiliVisti.indexOf(idMobile) < 0){
-		var nCasO = getNumeroCaselleOrizzontali(mobile.caselle.da, mobile.caselle.a);
-		var nCasV = getNumeroCaselleVerticali(mobile.caselle.da, mobile.caselle.a);
+		var nCasO = getNumeroCaselleOrizzontali(getDa(mobile.caselle), getA(mobile.caselle));
+		var nCasV = getNumeroCaselleVerticali(getDa(mobile.caselle), getA(mobile.caselle));
 		const src = mobile.tipo + mobile.posizione;
 		const height = nCasV*dCel-4;
 		const width = nCasO*dCel-4;
@@ -428,7 +428,7 @@ function visualizzaVisibilita (visibilita) {
 }
 
 function visualizzaScale (scale) {
-	var cas1 = scale.caselle.da;
+	var cas1 = getDa(scale.caselle);
 	const src = "scale" + scale.posizione;
 	const height = 2*dCel-2;
 	const width = 2*dCel-2;

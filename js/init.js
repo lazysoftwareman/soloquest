@@ -144,3 +144,29 @@ function getNumeroCaselleVerticali(da, a){
 function isOrizzontale(da, a) {
 	return getLettera(da) == getLettera(a);
 }
+
+function getDa(caselle) {
+	if (typeof a_string === 'string') {    
+		if (caselle.indexOf('-') > 0) {
+			const sep = caselle.indexOf('-');
+			return caselle.substring(0, sep);
+		} else {
+			return caselle;
+		}
+	} else {
+		return caselle.da;
+	}
+}
+
+function getA(caselle) {
+	if (typeof a_string === 'string') {    
+		if (caselle.indexOf('-') > 0) {
+			const sep = caselle.indexOf('-');
+			return caselle.substring(sep+1, caselle.length);
+		} else {
+			return caselle;
+		}
+	} else {
+		return caselle.a;
+	}
+}

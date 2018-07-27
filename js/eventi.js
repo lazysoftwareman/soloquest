@@ -28,7 +28,7 @@ function trovaAzione(evento, tipo){
 }
 
 function apriPorta(porta, automatico){
-	if (caselleViste.indexOf(porta.caselle.da) < 0 || caselleViste.indexOf(porta.caselle.a) < 0) {
+	if (caselleViste.indexOf(getDa(porta.caselle)) < 0 || caselleViste.indexOf(getA(porta.caselle)) < 0) {
 		if (automatico || !porta.blocco){
 			apriEffettivamentePorta(porta, automatico);
 		} else {
@@ -56,14 +56,14 @@ function apriConfirm(porta){
 }
 
 function apriEffettivamentePorta(porta, automatico){
-	var casPorta = getCaselle(porta.caselle.da, porta.caselle.a);
-	if (porta.vis1.da){
-		rendiVisibileSpread (casPorta, porta.vis1.da, porta.vis1.a);
+	var casPorta = getCaselle(getDa(porta.caselle), getA(porta.caselle));
+	if (getDa(porta.vis1)){
+		rendiVisibileSpread (casPorta, getDa(porta.vis1), getA(porta.vis1));
 	} else {
 		rendiVisibileSpread (casPorta, porta.vis1);
 	}
-	if (porta.vis2.da){
-		rendiVisibileSpread (casPorta, porta.vis2.da, porta.vis2.a);
+	if (getDa(porta.vis2)){
+		rendiVisibileSpread (casPorta, getDa(porta.vis2), getA(porta.vis2));
 	} else {
 		rendiVisibileSpread (casPorta, porta.vis2);
 	}
@@ -78,13 +78,13 @@ function apriEffettivamentePorta(porta, automatico){
 }
 
 function apriVisibilita(visib, automatico){
-	if (visib.vis1.da){
-		rendiVisibileSpread (visib.casella, visib.vis1.da, visib.vis1.a);
+	if (getDa(visib.vis1)){
+		rendiVisibileSpread (visib.casella, getDa(visib.vis1), getA(visib.vis1));
 	} else {
 		rendiVisibileSpread (visib.casella, visib.vis1);
 	}
-	if (visib.vis2.da){
-		rendiVisibileSpread (visib.casella, visib.vis2.da, visib.vis2.a);
+	if (getDa(visib.vis2)){
+		rendiVisibileSpread (visib.casella, getDa(visib.vis2), getA(visib.vis2));
 	} else {
 		rendiVisibileSpread (visib.casella, visib.vis2);
 	}
